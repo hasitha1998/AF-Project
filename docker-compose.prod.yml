@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  frontend:
+    image: teambinarymatter/af-frontend:prod
+    container_name: af-frontend
+    networks:
+      - payzy-prod-network
+    restart: always
+
+  backend:
+    image: teambinarymatter/af-backend:prod
+    container_name: af-backend
+    networks:
+      - payzy-prod-network
+    restart: always
+
+networks:
+  payzy-prod-network:
+    name: payzy-prod-network
+    driver: bridge
