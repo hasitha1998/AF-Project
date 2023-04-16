@@ -1,7 +1,17 @@
-export default function Home() {
+import PostList from "./PostList";
+import Hero from "./Hero";
+
+import { SampleProvider } from "../../contexts/SampleContext";
+
+const index = () => {
   return (
     <>
-      <h1 className="mt-5 text-4xl text-center">Home Page</h1>
+      <SampleProvider>
+        <Hero />
+        <PostList />
+      </SampleProvider>
     </>
   );
-}
+};
+
+export default index;
