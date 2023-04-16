@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="font-ubuntu">
       <QueryClientProvider client={queryClient}>
-        <Toaster position="top-right" reverseOrder={false} />
+        <Toaster position="top-center" reverseOrder={false} />
         <AppRoutes />
         <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
       </QueryClientProvider>
