@@ -58,7 +58,7 @@ const PostList = () => {
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   {posts?.data?.map((post) => (
-                    <tr>
+                    <tr key={post.id}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
                         {post.id}
                       </td>
