@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Pages
-import { Home, AdminLogin, AdminDashboard, PendingAccount,ManageUsers,ComplaintAdd, CustomerRegister} from "../pages";
+import { Home, AdminLogin, AdminDashboard, PendingAccount,ManageUsers,ComplaintAdd, CustomerRegister, CustomerLogin} from "../pages";
 
 
 // Components
@@ -18,6 +18,7 @@ const AppRoutes = () => {
           <Route path="/" element={<Home />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/customer/register" element={<CustomerRegister />} />
+          <Route path="/customer/login" element={<CustomerLogin />} />
 
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
 
