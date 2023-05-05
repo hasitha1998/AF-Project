@@ -2,8 +2,17 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Pages
-import { Home, AdminLogin, AdminDashboard, PendingAccount,ManageUsers,ComplaintAdd, CustomerRegister} from "../pages";
-
+import {
+  Home,
+  AdminLogin,
+  AdminDashboard,
+  PendingAccount,
+  ManageUsers,
+  ComplaintAdd,
+  CustomerRegister,
+  GovAuthLogin,
+  GovAuthRegister,
+} from "../pages";
 
 // Components
 import Header from "../components/Header";
@@ -19,20 +28,20 @@ const AppRoutes = () => {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/customer/register" element={<CustomerRegister />} />
 
+          {/* Government Authority Routes */}
+          <Route path="/gov/login" element={<GovAuthLogin />} />
+          <Route path="/gov/register" element={<GovAuthRegister />} />
+
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
 
           {/* User Management Routes */}
           <Route path="/user/pending" element={<PendingAccount />} />
           <Route path="/user/userManage" element={<ManageUsers />} />
 
-
           {/*Complaint Routes*/}
           <Route path="/complaint/add" element={<ComplaintAdd />} />
 
           {/*Customer Routes*/}
-         
-
-
         </Routes>
       </Router>
     </>
