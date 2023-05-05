@@ -29,6 +29,15 @@ import {
 	deleteGovAuthority,
 } from "./GovAuthority.service.js";
 
+import {
+	insertMaintenanceTeam,
+	getAllMaintenanceTeams,
+	getOneMaintenanceTeam,
+	updateMaintenanceTeam,
+	deleteMaintenanceTeam,
+	changeMaintenanceTeamStatus,
+} from "./MaintenanceTeam.service";
+
 export default {
 	// Sample services
 	insertAdmin,
@@ -62,4 +71,12 @@ export default {
 	getOneGovAuthority,
 	updateGovAuthority,
 	deleteGovAuthority,
+
+	// Maintenance Team Services
+	insertMaintenanceTeam,
+	getAllMaintenanceTeams,
+	getOneMaintenanceTeam,
+	updateMaintenanceTeam,
+	deleteMaintenanceTeam,
+	changeMaintenanceTeamStatus,
 };

@@ -30,6 +30,15 @@ import {
 	deleteGovAuthority,
 } from "./GovAuthority.controller.js";
 
+import {
+	insertMaintenanceTeam,
+	getAllMaintenanceTeams,
+	getOneMaintenanceTeam,
+	updateMaintenanceTeam,
+	deleteMaintenanceTeam,
+	changeMaintenanceTeamStatus,
+} from "./MaintenanceTeam.controller";
+
 export default {
 	// Sample Controllers
 	//Complaint Controllers
@@ -64,4 +73,12 @@ export default {
 	getOneGovAuthority,
 	updateGovAuthority,
 	deleteGovAuthority,
+
+	// MaintenanceTeam Controllers
+	insertMaintenanceTeam,
+	getAllMaintenanceTeams,
+	getOneMaintenanceTeam,
+	updateMaintenanceTeam,
+	deleteMaintenanceTeam,
+	changeMaintenanceTeamStatus,
 };
