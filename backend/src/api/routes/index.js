@@ -5,6 +5,7 @@ import ComplaintRouter from "./Complaint.route.js";
 import AdminAuthRouter from "./AdminAuth.route.js";
 import CustomerAuthRouter from "./CustomerAuth.route.js";
 import GovAuthorityRouter from "./GovAuthority.route.js";
+import MaintenanceTeamRouter from "./MaintenanceTeam.route.js";
 
 const router = Router();
 
@@ -18,5 +19,7 @@ router.use("/admin", AdminAuthRouter);
 router.use("/customer", CustomerAuthRouter);
 // GovAuthority Router
 router.use("/gov", GovAuthorityRouter);
+// MaintenanceTeam Router
+router.use("/team", MaintenanceTeamRouter);
 
 export default router;
