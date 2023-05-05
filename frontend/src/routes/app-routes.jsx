@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Pages
-import { Home, AdminLogin } from "../pages";
+import { Home, AdminLogin ,ComplaintAdd } from "../pages";
 
 // Components
 import Header from "../components/Header";
@@ -16,6 +16,10 @@ const AppRoutes = () => {
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/admin/login" element={<AdminLogin />} />
+
+          {/*Complaint Routes*/}
+          <Route path="/complaint/add" element={<ComplaintAdd />} />
+
         </Routes>
       </Router>
     </>
