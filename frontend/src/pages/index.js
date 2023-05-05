@@ -10,6 +10,7 @@ import GovAuthRegister from "./gov-auth-register";
 import GovAuthDashboard from "./gov-auth-dashboard";
 import ManageMaintenanceTeam from "./gov-manage-maintenanceTeam";
 import ManageComplaints from "./gov-manage-complaints";
+import CustomerLogin from "./customer-login";
 
 export {
   Home,
@@ -24,4 +25,5 @@ export {
   GovAuthDashboard,
   ManageMaintenanceTeam,
   ManageComplaints,
+  CustomerLogin,
 };

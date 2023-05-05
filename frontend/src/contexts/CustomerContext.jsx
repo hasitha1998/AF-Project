@@ -46,6 +46,25 @@ export function CustomerProvider({ children }) {
       });
   };
 
+  // Customer Login
+  const CustomerLogin = (values) => {
+    CustomerAPI.login(values)
+      .then((response) => {
+        localStorage.setItem("uId", response.data._id);
+        localStorage.setItem("name", response.data.name);
+        localStorage.setItem("email", response.data.email);
+        localStorage.setItem("nic", response.data.nic);
+        localStorage.setItem("authToken", response.data.token);
+        localStorage.setItem("permissionLevel", response.data.permissionLevel);
+
+        makeToast({ type: "success", message: "Login Successful" });
+        window.location.href = "/customer";
+      })
+      .catch((err) => {
+        makeToast({ type: "error", message: "Invalid Email or Password" });
+      });
+  };
+
   return (
     <CustomerContext.Provider
       value={{
@@ -58,11 +77,10 @@ export function CustomerProvider({ children }) {
         setMailError,
         nicError,
         setNicError,
+        CustomerLogin,
       }}
     >
-
       {children}
-
     </CustomerContext.Provider>
   );
 }

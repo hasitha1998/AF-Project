@@ -15,6 +15,7 @@ import {
   GovAuthDashboard,
   ManageMaintenanceTeam,
   ManageComplaints,
+  CustomerLogin,
 } from "../pages";
 
 // Components
@@ -30,6 +31,7 @@ const AppRoutes = () => {
           <Route path="/" element={<Home />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/customer/register" element={<CustomerRegister />} />
+          <Route path="/customer/login" element={<CustomerLogin />} />
 
           {/* Government Authority Routes */}
           <Route path="/gov/login" element={<GovAuthLogin />} />
