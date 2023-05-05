@@ -1,6 +1,7 @@
 import {} from "./Sample.controller";
+
 import { registerAdmin, loginAdmin, getAllAdmins, getOneAdmin, updateAdmin, deleteAdmin } from "./Admin.controller";
-	
+
 import {
 	insertComplaint,
 	getAllComplaints,
@@ -8,9 +9,17 @@ import {
 	updateComplaint,
 	deleteComplaint,
 	changeComplaintStatus,
-	searchComplaints
+	searchComplaints,
 } from "./Complaint.controller";
 
+import {
+	registerCustomer,
+	loginCustomer,
+	getOneCustomer,
+	getAllCustomers,
+	updateCustomer,
+	deleteCustomer,
+} from "./Customer.controller";
 
 export default {
 	// Sample Controllers
@@ -30,4 +39,12 @@ export default {
 	getOneAdmin,
 	updateAdmin,
 	deleteAdmin,
+
+	// Customer Controllers
+	registerCustomer,
+	loginCustomer,
+	getOneCustomer,
+	getAllCustomers,
+	updateCustomer,
+	deleteCustomer,
 };
