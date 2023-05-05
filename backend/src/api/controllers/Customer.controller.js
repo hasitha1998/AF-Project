@@ -1,21 +1,30 @@
-import AdminService from "../services";
+import CustomerService from "../services";
 import logger from "../../util/logger";
-import AdminModel from "../models/Admin.model";
+import CustomerModel from "../models/Customer.model";
 
-// Admin Register
-export const registerAdmin = async (request, response, next) => {
-	if (await AdminModel.findOne({ email: request.body.email })) {
+// Customer Register
+export const registerCustomer = async (request, response, next) => {
+	if (await CustomerModel.findOne({ email: request.body.email })) {
 		request.handleResponse.errorRespond(response)("Email already exists");
 		next();
+	} else if (await CustomerModel.findOne({ nic: request.body.nic })) {
+		request.handleResponse.errorRespond(response)("NIC already Exists");
+		next();
 	} else {
-		const Admin = {
+		const Customer = {
 			name: request.body.name,
 			email: request.body.email,
+			nic: request.body.nic,
+			address: request.body.address,
+			contact: request.body.contact,
+			imageBack: request.body.imageBack,
+			imageFront: request.body.imageFront,
 			password: request.body.password,
-			permissionLevel: "ADMIN",
+			accountStatus: request.body.accountStatus,
+			permissionLevel: "CUSTOMER",
 		};
 
-		await AdminService.insertAdmin(Admin)
+		await CustomerService.insertCustomer(Customer)
 			.then((data) => {
 				logger.info(`New User with ID ${data._id} created`);
 				request.handleResponse.successRespond(response)(data);
@@ -29,20 +38,20 @@ export const registerAdmin = async (request, response, next) => {
 	}
 };
 
-// Admin Login
-export const loginAdmin = async (request, response, next) => {
+// Customer Login
+export const loginCustomer = async (request, response, next) => {
 	const { email, password } = request.body;
 
 	if (email && password) {
-		await AdminService.authenticateAdmin(email, password)
-			.then(async (admin) => {
-				const authToken = await admin.generateAuthToken();
+		await CustomerService.authenticateCustomer(email, password)
+			.then(async (customer) => {
+				const authToken = await customer.generateAuthToken();
 				const data = {
-					_id: admin._id,
-					name: admin.name,
-					email: admin.email,
+					_id: customer._id,
+					name: customer.name,
+					email: customer.email,
 					token: authToken,
-					permissionLevel: admin.permissionLevel,
+					permissionLevel: customer.permissionLevel,
 				};
 
 				request.handleResponse.successRespond(response)(data);
@@ -64,10 +73,9 @@ export const loginAdmin = async (request, response, next) => {
 	}
 };
 
-// Get all admins
-
-export const getAllAdmins = async (request, response, next) => {
-	await AdminService.getAllAdmins("users")
+// Get all Customers
+export const getAllCustomers = async (request, response, next) => {
+	await CustomerService.getAllCustomers("users")
 		.then(async (data) => {
 			request.handleResponse.successRespond(response)(data);
 			next();
@@ -78,9 +86,9 @@ export const getAllAdmins = async (request, response, next) => {
 		});
 };
 
-// Get one Admin
-export const getOneAdmin = async (request, response, next) => {
-	await AdminService.getOneAdmin(request.params.id)
+// Get one Customer
+export const getOneCustomer = async (request, response, next) => {
+	await CustomerService.getOneCustomer(request.params.id)
 		.then((data) => {
 			request.handleResponse.successRespond(response)(data);
 			next();
@@ -91,9 +99,9 @@ export const getOneAdmin = async (request, response, next) => {
 		});
 };
 
-// Update Admin
-export const updateAdmin = async (request, response, next) => {
-	await AdminService.updateAdmin(request.params.id, request.body)
+// Update Customer
+export const updateCustomer = async (request, response, next) => {
+	await CustomerService.updateCustomer(request.params.id, request.body)
 		.then((data) => {
 			request.handleResponse.successRespond(response)(data);
 			next();
@@ -104,9 +112,9 @@ export const updateAdmin = async (request, response, next) => {
 		});
 };
 
-// Delete one Admin
-export const deleteAdmin = async (request, response, next) => {
-	await AdminService.deleteAdmin(request.params.id)
+// Delete one Customer
+export const deleteCustomer = async (request, response, next) => {
+	await CustomerService.deleteCustomer(request.params.id)
 		.then((data) => {
 			request.handleResponse.successRespond(response)(data);
 			next();

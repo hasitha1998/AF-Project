@@ -6,11 +6,19 @@ import {
 	updateComplaint,
 	deleteComplaint,
 	changeComplaintStatus,
-	searchComplaints
+	searchComplaints,
 } from "./Complaint.service";
 
-
 import { insertAdmin, authenticateAdmin, getAllAdmins, getOneAdmin, updateAdmin, deleteAdmin } from "./Admin.service";
+
+import {
+	insertCustomer,
+	authenticateCustomer,
+	getAllCustomers,
+	getOneCustomer,
+	updateCustomer,
+	deleteCustomer,
+} from "./Customer.service";
 
 export default {
 	// Sample services
@@ -20,7 +28,7 @@ export default {
 	getOneAdmin,
 	updateAdmin,
 	deleteAdmin,
-	
+
 	//Complaint Services
 	insertComplaint,
 	getAllComplaints,
@@ -28,5 +36,13 @@ export default {
 	updateComplaint,
 	deleteComplaint,
 	changeComplaintStatus,
-	searchComplaints
+	searchComplaints,
+
+	// Customer Services
+	insertCustomer,
+	authenticateCustomer,
+	getAllCustomers,
+	getOneCustomer,
+	updateCustomer,
+	deleteCustomer,
 };
