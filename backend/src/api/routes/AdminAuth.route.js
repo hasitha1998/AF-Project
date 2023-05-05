@@ -3,10 +3,6 @@ import controllers from "../controllers";
 
 const router = Router();
 
-router.get("/admin", (req, res, next) => {
-	res.send("Admin Auth API");
-	next();
-});
 
 // Admin Endpoints
 router.post("/register", controllers.registerAdmin);
