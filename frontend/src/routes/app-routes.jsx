@@ -12,6 +12,9 @@ import {
   CustomerRegister,
   GovAuthLogin,
   GovAuthRegister,
+  GovAuthDashboard,
+  ManageMaintenanceTeam,
+  ManageComplaints,
 } from "../pages";
 
 // Components
@@ -31,6 +34,12 @@ const AppRoutes = () => {
           {/* Government Authority Routes */}
           <Route path="/gov/login" element={<GovAuthLogin />} />
           <Route path="/gov/register" element={<GovAuthRegister />} />
+          <Route path="/gov/dashboard" element={<GovAuthDashboard />} />
+          <Route
+            path="/gov/maintenanceTeam"
+            element={<ManageMaintenanceTeam />}
+          />
+          <Route path="/gov/complaints" element={<ManageComplaints />} />
 
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
 
