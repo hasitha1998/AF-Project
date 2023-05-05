@@ -3,11 +3,6 @@ import controllers from "../controllers";
 
 const router = Router();
 
-router.get("/customer", (req, res, next) => {
-	res.send("Customer Auth API");
-	next();
-});
-
 // Customer Endpoints
 router.post("/register", controllers.registerCustomer);
 router.post("/login", controllers.loginCustomer);

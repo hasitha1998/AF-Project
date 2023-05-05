@@ -3,7 +3,6 @@ import controllers from "../controllers";
 
 const router = Router();
 
-
 // Admin Endpoints
 router.post("/register", controllers.registerAdmin);
 router.post("/login", controllers.loginAdmin);
