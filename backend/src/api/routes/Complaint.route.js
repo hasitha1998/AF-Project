@@ -1,13 +1,11 @@
 import { Router } from "express";
- import controllers from "../controllers";
+import controllers from "../controllers";
 
 const router = Router();
 
-router.get("/test", (req, res, next) => {
+router.get("/test", (req, res) => {
 	res.send("Complaint API");
-	next();
 });
-
 
 //Complaint Endpoints
 router.post("/", controllers.insertComplaint); // insert one complaint

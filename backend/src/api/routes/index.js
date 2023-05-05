@@ -1,6 +1,6 @@
 import { Router } from "express";
 import SampleRouter from "./Sample.route.js";
-import middleware from "../middleware";
+// import middleware from "../middleware";
 import ComplaintRouter from "./Complaint.route.js";
 import AdminAuthRouter from "./AdminAuth.route.js";
 import CustomerAuthRouter from "./CustomerAuth.route.js";
