@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import AdminContext from "../../contexts/AdminContext";
 
 const AdminLogin = () => {
+  const { AdminLogin } = useContext(AdminContext);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
@@ -28,6 +30,17 @@ const AdminLogin = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newAdmin = {
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
+
+    AdminLogin(newAdmin);
+  };
+
   return (
     <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 px-6">
       <div class="sm:mx-auto sm:w-full sm:max-w-md">
@@ -43,7 +56,7 @@ const AdminLogin = () => {
 
       <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div>
               <label
                 for="email"
@@ -60,7 +73,7 @@ const AdminLogin = () => {
                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                   onChange={() => {
                     checkEmail();
-                }}
+                  }}
                 />
                 <span className="text-red-500 text-sm">{emailError}</span>
                 <div class="hidden absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
@@ -96,7 +109,7 @@ const AdminLogin = () => {
                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                   onChange={() => {
                     checkPassword();
-                }}
+                  }}
                 />
                 <span className="text-red-500 text-sm">{passwordError}</span>
               </div>
