@@ -1,7 +1,8 @@
 import { Router } from "express";
 import SampleRouter from "./Sample.route.js";
-import ComplaintRouter from "./Complaint.route.js"
-import controllers from "../controllers/index.js";
+import middleware from "../middleware";
+import ComplaintRouter from "./Complaint.route.js";
+import AdminAuthRouter from "./AdminAuth.route.js";
 
 const router = Router();
 
@@ -15,10 +16,7 @@ router.get("/", (req, res, next) => {
 router.use("/sample", SampleRouter);
 // Complaint Router
 router.use("/complaint", ComplaintRouter);
-
-
-
-
-
+// Admin Router
+router.use("/admin", AdminAuthRouter);
 
 export default router;

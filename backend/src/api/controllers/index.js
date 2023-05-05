@@ -1,4 +1,6 @@
 import {} from "./Sample.controller";
+import { registerAdmin, loginAdmin, getAllAdmins, getOneAdmin, updateAdmin, deleteAdmin } from "./Admin.controller";
+	
 import {
 	insertComplaint,
 	getAllComplaints,
@@ -19,5 +21,13 @@ export default {
 	updateComplaint,
 	deleteComplaint,
 	changeComplaintStatus,
-	searchComplaints
+	searchComplaints,
+
+	// Admin Controllers
+	registerAdmin,
+	loginAdmin,
+	getAllAdmins,
+	getOneAdmin,
+	updateAdmin,
+	deleteAdmin,
 };
