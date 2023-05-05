@@ -2,7 +2,7 @@ import axios from "axios";
 import requestConfig from "./requestConfig";
 import requestConfigJson from "./requestConfigJson";
 
-const BASE_URL = process.env.VITE_BACKEND_URL;
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 class CustomerAPI {
   // Customer login
