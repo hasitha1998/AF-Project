@@ -11,6 +11,10 @@ const ComplaintSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	authority:{
+		type:String,
+		required: true,
+	},
 	province: {
 		type: String,
 		required: true,

@@ -10,10 +10,14 @@ const ComplaintAdd = () => {
 	const { addComplaint } = useContext(ComplaintContext);
 	const[province,setProvince]=useState();
 	const[district,setDistrict]=useState();
+	const[authority,setAuthority]=useState();
 	const [image, setImage] = useState("");
 	const [url, setUrl] = useState("");
 
-
+	const onChangeAuthority = (event) => {
+		const value = event.target.value;
+		setAuthority(value);
+	  };
 
 	const onChangeProvince = (event) => {
 		const value = event.target.value;
@@ -58,6 +62,7 @@ const ComplaintAdd = () => {
 			
 			complaintTitle:e.target.complaintTitle.value,
             description:e.target.description.value,
+			authority:authority,
             province:province,
             district:district,
             location:e.target.location.value,
@@ -139,6 +144,17 @@ const ComplaintAdd = () => {
 									</div>
 								</div>
 							</div>
+		<div>
+		<label htmlFor="fname">Authority</label>
+		<div className="mb-6">
+      <select className="border w-80 border-solid py-1.5 rounded border-red-800 text-center" onChange={onChangeAuthority}>
+	    <option slected>select the relevant Authority</option>
+		{Authority.map((authority,key)=>(		
+		<option value={authority}>{authority}</option>
+		))}
+	  </select>
+	  </div>
+	  </div>
 	<div className="grid grid-cols-2 mb-6 gap-x-10  w-72">
 		<div className="-ml-[220px] ">
 		<label htmlFor="fname">Province</label>
@@ -214,8 +230,7 @@ const ComplaintAdd = () => {
 };
 
 const Province=["Western", "Central", "Eastern", "Northern", "North Western", "North Central", "Sabaragamuwa","Southern", "Uva"]
-
-
+const Authority=["RDA","LECO"]
 const districts = [
 	{ name: 'Colombo', province: 'Western' },
 	{ name: 'Gampaha', province: 'Western' },
