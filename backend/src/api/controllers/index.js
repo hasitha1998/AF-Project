@@ -21,6 +21,15 @@ import {
 	deleteCustomer,
 } from "./Customer.controller";
 
+import {
+	registerGovAuthority,
+	loginGovAuthority,
+	getAllGovAuthorities,
+	getOneGovAuthority,
+	updateGovAuthority,
+	deleteGovAuthority,
+} from "./GovAuthority.controller.js";
+
 export default {
 	// Sample Controllers
 	//Complaint Controllers
@@ -47,4 +56,12 @@ export default {
 	getAllCustomers,
 	updateCustomer,
 	deleteCustomer,
+
+	// GovAuthority Controllers
+	registerGovAuthority,
+	loginGovAuthority,
+	getAllGovAuthorities,
+	getOneGovAuthority,
+	updateGovAuthority,
+	deleteGovAuthority,
 };

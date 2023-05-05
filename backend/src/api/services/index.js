@@ -20,6 +20,15 @@ import {
 	deleteCustomer,
 } from "./Customer.service";
 
+import {
+	insertGovAuthority,
+	authenticateGovAuthority,
+	getAllGovAuthorities,
+	getOneGovAuthority,
+	updateGovAuthority,
+	deleteGovAuthority,
+} from "./GovAuthority.service.js";
+
 export default {
 	// Sample services
 	insertAdmin,
@@ -45,4 +54,12 @@ export default {
 	getOneCustomer,
 	updateCustomer,
 	deleteCustomer,
+
+	// GovAuthority Services
+	insertGovAuthority,
+	authenticateGovAuthority,
+	getAllGovAuthorities,
+	getOneGovAuthority,
+	updateGovAuthority,
+	deleteGovAuthority,
 };

@@ -4,14 +4,9 @@ import SampleRouter from "./Sample.route.js";
 import ComplaintRouter from "./Complaint.route.js";
 import AdminAuthRouter from "./AdminAuth.route.js";
 import CustomerAuthRouter from "./CustomerAuth.route.js";
+import GovAuthorityRouter from "./GovAuthority.route.js";
 
 const router = Router();
-
-// Root API Call
-router.get("/", (req, res, next) => {
-	res.send("Backend API");
-	next();
-});
 
 // Sample Router
 router.use("/sample", SampleRouter);
@@ -21,5 +16,7 @@ router.use("/complaint", ComplaintRouter);
 router.use("/admin", AdminAuthRouter);
 // Customer Router
 router.use("/customer", CustomerAuthRouter);
+// GovAuthority Router
+router.use("/gov", GovAuthorityRouter);
 
 export default router;
