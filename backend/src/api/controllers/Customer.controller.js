@@ -50,6 +50,7 @@ export const loginCustomer = async (request, response, next) => {
 					_id: customer._id,
 					name: customer.name,
 					email: customer.email,
+					nic:customer.nic,
 					token: authToken,
 					permissionLevel: customer.permissionLevel,
 				};
