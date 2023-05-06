@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
   return (
@@ -78,59 +79,72 @@ const AdminDashboard = () => {
               <h1 className="font-bold py-4 uppercase">User Management</h1>
               <div id="stats" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               <div className="bg-white to-white/5 rounded-lg">
-  <div className="flex flex-row items-center">
-    <div className="text-3xl p-4">💰</div>
+  <div className="flex flex-row items-center"> 
     <div className="p-2">
-      <p className="text-xl font-bold text-black">Manage Accounts</p>
-      <p className="text-black font-medium">Amber Gates</p>
+      <p className="text-xl font-bold text-black">Pending Accounts</p>
     </div>
   </div>
+  <div>
+  <img className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover" src="../pending.png" alt="" />
+  </div>
   <div className="border-t border-white/5 p-4">
-    <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
-      Accept Payment
-    </button>
+    <Link to="/user/pending">
+      <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
+        Accept Payment
+      </button>
+    </Link>
+  </div>
+</div>
+
+<div className="bg-white to-white/5 rounded-lg">
+  <div className="flex flex-row items-center"> 
+    <div className="p-2">
+      <p className="text-xl font-bold text-black">Pending Accounts</p>
+    </div>
+  </div>
+  <div>
+  <img className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover" src="../pending.png" alt="" />
+  </div>
+  <div className="border-t border-white/5 p-4">
+    <Link to="/user/pending">
+      <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
+        Accept Payment
+      </button>
+    </Link>
   </div>
 </div>
 <div className="bg-white to-white/5 rounded-lg">
-  <div className="flex flex-row items-center">
-    <div className="text-3xl p-4">💰</div>
+  <div className="flex flex-row items-center"> 
     <div className="p-2">
-      <p className="text-xl font-bold text-black">Manage Pending</p>
-      <p className="text-black font-medium">Amber Gates</p>
+      <p className="text-xl font-bold text-black">Pending Accounts</p>
     </div>
   </div>
+  <div>
+  <img className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover" src="../pending.png" alt="" />
+  </div>
   <div className="border-t border-white/5 p-4">
-    <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
-      Accept Payment
-    </button>
+    <Link to="/user/pending">
+      <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
+        Accept Payment
+      </button>
+    </Link>
   </div>
 </div>
 <div className="bg-white to-white/5 rounded-lg">
-  <div className="flex flex-row items-center">
-    <div className="text-3xl p-4">💰</div>
+  <div className="flex flex-row items-center"> 
     <div className="p-2">
-      <p className="text-xl font-bold text-black">Manage Accounts</p>
-      <p className="text-black font-medium">Amber Gates</p>
+      <p className="text-xl font-bold text-black">Pending Accounts</p>
     </div>
   </div>
-  <div className="border-t border-white/5 p-4">
-    <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
-      Accept Payment
-    </button>
-  </div>
-</div>
-<div className="bg-white to-white/5 rounded-lg">
-  <div className="flex flex-row items-center">
-    <div className="text-3xl p-4">💰</div>
-    <div className="p-2">
-      <p className="text-xl font-bold text-black">Manage Accounts</p>
-      <p className="text-black font-medium">Amber Gates</p>
-    </div>
+  <div>
+  <img className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover" src="../pending.png" alt="" />
   </div>
   <div className="border-t border-white/5 p-4">
-    <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
-      Accept Payment
-    </button>
+    <Link to="/user/pending">
+      <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
+        Accept Payment
+      </button>
+    </Link>
   </div>
 </div>
                 </div>
@@ -139,61 +153,73 @@ const AdminDashboard = () => {
               <h1 className="font-bold py-4 uppercase">Manage Authority</h1>
               <div id="stats" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               <div className="bg-white to-white/5 rounded-lg">
-  <div className="flex flex-row items-center">
-    <div className="text-3xl p-4">💰</div>
+  <div className="flex flex-row items-center"> 
     <div className="p-2">
-      <p className="text-xl font-bold text-black">Manage Accounts</p>
-      <p className="text-black font-medium">Amber Gates</p>
+      <p className="text-xl font-bold text-black">Pending Accounts</p>
     </div>
   </div>
+  <div>
+  <img className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover" src="../pending.png" alt="" />
+  </div>
   <div className="border-t border-white/5 p-4">
-    <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
-      Accept Payment
-    </button>
+    <Link to="/user/pending">
+      <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
+        Accept Payment
+      </button>
+    </Link>
   </div>
 </div>
 
 <div className="bg-white to-white/5 rounded-lg">
-  <div className="flex flex-row items-center">
-    <div className="text-3xl p-4">💰</div>
+  <div className="flex flex-row items-center"> 
     <div className="p-2">
-      <p className="text-xl font-bold text-black">Manage Accounts</p>
-      <p className="text-black font-medium">Amber Gates</p>
+      <p className="text-xl font-bold text-black">Pending Accounts</p>
     </div>
   </div>
+  <div>
+  <img className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover" src="../pending.png" alt="" />
+  </div>
   <div className="border-t border-white/5 p-4">
-    <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
-      Accept Payment
-    </button>
+    <Link to="/user/pending">
+      <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
+        Accept Payment
+      </button>
+    </Link>
   </div>
 </div>
 
 <div className="bg-white to-white/5 rounded-lg">
-  <div className="flex flex-row items-center">
-    <div className="text-3xl p-4">💰</div>
+  <div className="flex flex-row items-center"> 
     <div className="p-2">
-      <p className="text-xl font-bold text-black">Manage Accounts</p>
-      <p className="text-black font-medium">Amber Gates</p>
+      <p className="text-xl font-bold text-black">Pending Accounts</p>
     </div>
   </div>
+  <div>
+  <img className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover" src="../pending.png" alt="" />
+  </div>
   <div className="border-t border-white/5 p-4">
-    <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
-      Accept Payment
-    </button>
+    <Link to="/user/pending">
+      <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
+        Accept Payment
+      </button>
+    </Link>
   </div>
 </div>
 <div className="bg-white to-white/5 rounded-lg">
-  <div className="flex flex-row items-center">
-    <div className="text-3xl p-4">💰</div>
+  <div className="flex flex-row items-center"> 
     <div className="p-2">
-      <p className="text-xl font-bold text-black">Manage Accounts</p>
-      <p className="text-black font-medium">Amber Gates</p>
+      <p className="text-xl font-bold text-black">Pending Accounts</p>
     </div>
   </div>
+  <div>
+  <img className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover" src="../pending.png" alt="" />
+  </div>
   <div className="border-t border-white/5 p-4">
-    <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
-      Accept Payment
-    </button>
+    <Link to="/user/pending">
+      <button className="bg-blue-500 ml-3 text-white px-4 py-2 rounded-lg mt-4">
+        Accept Payment
+      </button>
+    </Link>
   </div>
 </div>
                 </div>
