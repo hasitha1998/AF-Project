@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
+import CheckLoginStatus from "./CheckLoginStatus";
 
 // Pages
 import {
@@ -16,7 +18,8 @@ import {
   ManageMaintenanceTeam,
   ManageComplaints,
   CustomerLogin,
-  CustomerDashboard
+  AdminProfile,
+  CustomerDashboard,
 } from "../pages";
 
 // Components
@@ -30,7 +33,6 @@ const AppRoutes = () => {
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
-          <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/customer/register" element={<CustomerRegister />} />
           <Route path="/customer/login" element={<CustomerLogin />} />
 
@@ -44,7 +46,16 @@ const AppRoutes = () => {
           />
           <Route path="/gov/complaints" element={<ManageComplaints />} />
 
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          {/* Check Login Status Admin */}
+          <Route exact path="/admin/login" element={<CheckLoginStatus />}>
+            <Route exact path="/admin/login" element={<AdminLogin />} />
+          </Route>
+
+          {/* Admin Private Routes */}
+          <Route exact path="/admin" element={<PrivateRoute permissionLevel="ADMIN" />}>
+            <Route exact path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/:id" element={<AdminProfile />} />
+          </Route>
 
           {/* User Management Routes */}
           <Route path="/user/pending" element={<PendingAccount />} />
@@ -55,7 +66,6 @@ const AppRoutes = () => {
 
           {/*Customer Routes*/}
           <Route path="/customer/dashboard" element={<CustomerDashboard />} />
-
         </Routes>
       </Router>
     </>

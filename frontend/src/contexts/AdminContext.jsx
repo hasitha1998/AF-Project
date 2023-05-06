@@ -32,6 +32,41 @@ export function AdminProvider({ children }) {
       });
   };
 
+  // Admin Register
+  const AdminRegister = async (values) => {
+    AdminAPI.register(values)
+      .then((response) => {
+        setAdmins([...admins, response.data]);
+        makeToast({ type: "success", message: "Registration Successful" });
+        window.location.href = "/admin/login";
+      })
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.log(err.response.data);
+        if (err.response.data.details == "Email already exists") {
+          alert("Email already exists");
+          makeToast({ type: "error", message: "Email already exists" });
+          setMailError(err.response.data.details);
+        }
+      });
+  };
+
+  // Get one Admin
+  const getOneAdmin = (id) => {
+    useEffect(() => {
+      AdminAPI.getOneAdmin(id).then((res) => {
+        setAdmin(res.data);
+      });
+    }, []);
+  };
+
+  //Get all Admin
+  useEffect(() => {
+    AdminAPI.getAdmins().then((response) => {
+      setAdmins(response.data);
+    });
+  }, []);
+
   return (
     <AdminContext.Provider
       value={{
@@ -40,6 +75,8 @@ export function AdminProvider({ children }) {
         admin,
         setAdmin,
         AdminLogin,
+        AdminRegister,
+        getOneAdmin,
       }}
     >
       {children}
