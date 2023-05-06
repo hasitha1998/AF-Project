@@ -33,7 +33,7 @@ export function ComplaintProvider({ children }) {
 		setIsLoading(true);
 		ComplaintAPI.getComplaints().then((response) => {
 			setComplaints(response.data);
-			//console.log(products.values("productName"));
+		//console.log(products.values("productName"));
 			setIsLoading(false);
 		});
 	}, []);
