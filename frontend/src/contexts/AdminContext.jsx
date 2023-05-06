@@ -25,7 +25,7 @@ export function AdminProvider({ children }) {
         localStorage.setItem("permissionLevel", response.data.permissionLevel);
 
         makeToast({ type: "success", message: "Login Successful" });
-        window.location.href = "/admin/dashboard";
+        window.location.href = "/admin";
       })
       .catch((err) => {
         makeToast({ type: "error", message: "Invalid Email or Password" });

@@ -1,19 +1,31 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import makeToast from "./toast";
 
 const Header = () => {
-  const navigate = useNavigate();
   const permissionLevel = localStorage.getItem("permissionLevel");
 
   const logout = () => {
     localStorage.removeItem("uId");
     localStorage.removeItem("name");
     localStorage.removeItem("email");
+    localStorage.removeItem("nic");
     localStorage.removeItem("authToken");
     localStorage.removeItem("permissionLevel");
-    navigate("/");
-    window.location.reload();
-    makeToast({ type: "success", message: "Logout Successful" });
+
+    if (permissionLevel === "ADMIN") {
+      window.location.href = "/admin/login";
+      makeToast({ type: "success", message: "Logout Successful" });
+    } else if (permissionLevel === "CUSTOMER") {
+      window.location.href = "/customer/login";
+      makeToast({ type: "success", message: "Logout Successful" });
+    } else if (permissionLevel === "GOV_AUTHORITY") {
+      window.location.href = "/gov/login";
+      makeToast({ type: "success", message: "Logout Successful" });
+    } else {
+      window.location.href = "/";
+      makeToast({ type: "success", message: "Logout Successful" });
+    }
   };
 
   return (
@@ -183,7 +195,7 @@ const Header = () => {
             </div>
             {permissionLevel && (
               <button
-                className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500" 
+                className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
                 onClick={logout}
                 to="/"
               >
