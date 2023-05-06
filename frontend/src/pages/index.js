@@ -13,6 +13,7 @@ import ManageComplaints from "./gov-manage-complaints";
 import CustomerLogin from "./customer-login";
 import AdminProfile from "./admin-profile";
 import CustomerDashboard from "./customer-dashboard";
+import AdminComplaintView from "./admin-complaint-view";
 
 export {
   Home,
@@ -29,5 +30,6 @@ export {
   ManageComplaints,
   CustomerLogin,
   AdminProfile,
-  CustomerDashboard
+  CustomerDashboard,
+  AdminComplaintView,
 };
