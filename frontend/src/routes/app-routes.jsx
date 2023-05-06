@@ -16,6 +16,7 @@ import {
   ManageMaintenanceTeam,
   ManageComplaints,
   CustomerLogin,
+  CustomerDashboard
 } from "../pages";
 
 // Components
@@ -53,6 +54,8 @@ const AppRoutes = () => {
           <Route path="/complaint/add" element={<ComplaintAdd />} />
 
           {/*Customer Routes*/}
+          <Route path="/customer/dashboard" element={<CustomerDashboard />} />
+
         </Routes>
       </Router>
     </>
