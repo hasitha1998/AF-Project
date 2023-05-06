@@ -25,12 +25,47 @@ export function AdminProvider({ children }) {
         localStorage.setItem("permissionLevel", response.data.permissionLevel);
 
         makeToast({ type: "success", message: "Login Successful" });
-        window.location.href = "/admin";
+        window.location.href = "/admin/dashboard";
       })
       .catch((err) => {
         makeToast({ type: "error", message: "Invalid Email or Password" });
       });
   };
+
+  // Admin Register
+  const AdminRegister = async (values) => {
+    AdminAPI.register(values)
+      .then((response) => {
+        setAdmins([...admins, response.data]);
+        makeToast({ type: "success", message: "Registration Successful" });
+        window.location.href = "/admin/login";
+      })
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.log(err.response.data);
+        if (err.response.data.details == "Email already exists") {
+          alert("Email already exists");
+          makeToast({ type: "error", message: "Email already exists" });
+          setMailError(err.response.data.details);
+        }
+      });
+  };
+
+  // Get one Admin
+  const getOneAdmin = (id) => {
+    useEffect(() => {
+      AdminAPI.getOneAdmin(id).then((res) => {
+        setAdmin(res.data);
+      });
+    }, []);
+  };
+
+  //Get all Admin
+  useEffect(() => {
+    AdminAPI.getAdmins().then((response) => {
+      setOrders(response.data);
+    });
+  }, []);
 
   return (
     <AdminContext.Provider
@@ -40,6 +75,8 @@ export function AdminProvider({ children }) {
         admin,
         setAdmin,
         AdminLogin,
+        AdminRegister,
+        getOneAdmin,
       }}
     >
       {children}
