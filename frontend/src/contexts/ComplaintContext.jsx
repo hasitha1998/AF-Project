@@ -82,6 +82,8 @@ export function ComplaintProvider({ children }) {
             citizenName:values.citizenName,
             citizenNIC:values.citizenNIC,
             complaintStatus:values.complaintStatus,
+			isPublished:values.isPublished,
+			assignedTeam:values.assignedTeam
 		};
 		ComplaintAPI.editComplaint(values.id, newComplaint)
 			.then((response) => {
@@ -96,6 +98,17 @@ export function ComplaintProvider({ children }) {
 				console.log(err);
 			});
 	};
+
+	// Change complaint status
+	const changeComplaintStatus = async (complaintId , status) => {
+		try {
+		  const { data } = await ComplaintAPI.changeComplaintStatus(complaintId, status);
+		  makeToast({ type: "success", message: "Complaint status updated successfully" });
+		} catch (error) {
+		  console.log(error);
+		  makeToast({ type: "error", message: "Something went wrong" });
+		}
+	  };
 
 	// Delete Complaint
 

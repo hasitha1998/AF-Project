@@ -65,6 +65,46 @@ export function CustomerProvider({ children }) {
       });
   };
 
+
+  // Get all customers
+  const getAllCustomers = async () => {
+    try {
+      const response = await CustomerAPI.getCustomers();
+      setCustomers(response.data);
+      makeToast({ type: "success", message: "Customers fetched successfully" });
+    } catch (err) {
+      makeToast({ type: "error", message: "Failed to fetch customers" });
+      console.log(err);
+    }
+  };
+  
+  useEffect(() => {
+    getAllCustomers();
+  }, []);
+  
+
+   // Update customer
+   const updateCustomer = async (customerId, updatedCustomer) => {
+    try {
+      const response = await CustomerAPI.editCustomer(customerId, updatedCustomer);
+      setCustomers(customers.map((customer) => (customer._id === customerId ? response.data : customer)));
+      makeToast({ type: "success", message: "Customer updated successfully" });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Delete customer
+  const deleteCustomer = async (customerId) => {
+    try {
+      await CustomerAPI.deleteCustomer(customerId);
+      setCustomers(customers.filter((customer) => customer._id !== customerId));
+      makeToast({ type: "success", message: "Customer deleted successfully" });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <CustomerContext.Provider
       value={{
@@ -78,6 +118,10 @@ export function CustomerProvider({ children }) {
         nicError,
         setNicError,
         CustomerLogin,
+        updateCustomer,
+        deleteCustomer,
+        getAllCustomers,
+        
       }}
     >
       {children}
