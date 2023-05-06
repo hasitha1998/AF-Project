@@ -1,12 +1,14 @@
 import React from "react";
 import AdminLogin from "./AdminLogin";
 
+import { AdminProvider } from "../../contexts/AdminContext";
+
 const index = () => {
-    return (
-        <div>
-            <AdminLogin />
-        </div>
-    );
+  return (
+    <AdminProvider>
+      <AdminLogin />
+    </AdminProvider>
+  );
 };
 
 export default index;

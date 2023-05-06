@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
-import AdminContext from "../../contexts/AdminContext";
+import React, { useState,useContext } from "react";
+import CustomerContext from "../../contexts/CustomerContext";
 
-const AdminLogin = () => {
-  const { AdminLogin } = useContext(AdminContext);
+const CustomerLogin = () => {
+  const { CustomerLogin } = useContext(CustomerContext);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
@@ -33,34 +33,34 @@ const AdminLogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newAdmin = {
+    const newCustomer = {
       email: e.target.email.value,
       password: e.target.password.value,
     };
 
-    AdminLogin(newAdmin);
+    CustomerLogin(newCustomer);
   };
 
   return (
-    <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 px-6">
-      <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 px-6">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <img
           class="mx-auto h-20 w-auto"
           src="https://www.svgrepo.com/show/301692/login.svg"
           alt="Workflow"
         />
-        <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
-          Welcome Back Admin
+        <h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
+          Welcome Back Customer
         </h2>
       </div>
 
-      <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form onSubmit={handleSubmit}>
             <div>
               <label
                 for="email"
-                class="block text-sm font-medium leading-5  text-gray-700"
+                className="block text-sm font-medium leading-5  text-gray-700"
               >
                 Email address
               </label>
@@ -159,4 +159,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default CustomerLogin;
