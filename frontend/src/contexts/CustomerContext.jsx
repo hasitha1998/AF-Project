@@ -58,7 +58,7 @@ export function CustomerProvider({ children }) {
         localStorage.setItem("permissionLevel", response.data.permissionLevel);
 
         makeToast({ type: "success", message: "Login Successful" });
-        window.location.href = "/customer";
+        window.location.href = "/customer/dashboard";
       })
       .catch((err) => {
         makeToast({ type: "error", message: "Invalid Email or Password" });
