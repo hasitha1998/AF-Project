@@ -1,13 +1,14 @@
 import React from "react";
 import ManageUsers from "./ManageUsers";
-import PendingAccount from "./PendingAccounts";
+import PendingAccounts from "./PendingAccounts";
+import { CustomerProvider } from "../../contexts/CustomerContext";
 
 const index = () => {
     return (
-        <div>
+        <CustomerProvider>
             <ManageUsers />
-            <PendingAccount />
-        </div>
+            <PendingAccounts />
+        </CustomerProvider>
     );
 };
 
