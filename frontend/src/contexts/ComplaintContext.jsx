@@ -17,6 +17,7 @@ export function ComplaintProvider({ children }) {
 
        complaintTitle:"",
        description:"",
+	   authority:"",
        province:"",
        district:"",
        location:"",
@@ -71,6 +72,7 @@ export function ComplaintProvider({ children }) {
 			
             complaintTitle:values.complaintTitle,
             description:values.description,
+			authority:values.authority,
             province:values.province,
             district:values.district,
             location:values.location,

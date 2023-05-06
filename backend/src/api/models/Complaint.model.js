@@ -11,6 +11,10 @@ const ComplaintSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	authority:{
+		type:String,
+		required: true,
+	},
 	province: {
 		type: String,
 		required: true,
@@ -47,6 +51,16 @@ const ComplaintSchema = new mongoose.Schema({
     complaintStatus: {
 		type: String,
 		required: true,
+		default: "pending",
+		enum: ["pending", "assigned", "inProgress", "resolved", "invalid"],
+	},
+	isPublish: {
+		type: Boolean,
+		default: false,
+	},
+	assignedTeam: {
+		type: String,
+		default: null
 	},
 });
 
