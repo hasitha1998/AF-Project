@@ -282,7 +282,7 @@ const AdminDashboard = () => {
                   <div className="flex flex-row items-center">
                     <div className="p-2">
                       <p className="text-xl font-bold text-black">
-                        Government Authority
+                        Gov. Authority
                       </p>
                     </div>
                   </div>
@@ -308,7 +308,7 @@ const AdminDashboard = () => {
                   <div className="flex flex-row items-center">
                     <div className="p-2">
                       <p className="text-xl font-bold text-black">
-                        Pending Accounts
+                        Compalints
                       </p>
                     </div>
                   </div>
@@ -321,7 +321,7 @@ const AdminDashboard = () => {
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
-                      <Link to="/user/pending">
+                      <Link to="/admin/complaint">
                         <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
@@ -334,7 +334,7 @@ const AdminDashboard = () => {
                   <div className="flex flex-row items-center">
                     <div className="p-2">
                       <p className="text-xl font-bold text-black">
-                        Pending Accounts
+                        Feedbacks
                       </p>
                     </div>
                   </div>

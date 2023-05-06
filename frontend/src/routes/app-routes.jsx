@@ -20,6 +20,7 @@ import {
   CustomerLogin,
   AdminProfile,
   CustomerDashboard,
+  AdminComplaintView,
 } from "../pages";
 
 // Components
@@ -55,6 +56,7 @@ const AppRoutes = () => {
           <Route exact path="/admin" element={<PrivateRoute permissionLevel="ADMIN" />}>
             <Route exact path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/:id" element={<AdminProfile />} />
+            <Route path="/admin/complaint" element={<AdminComplaintView />} />
           </Route>
 
           {/* User Management Routes */}
