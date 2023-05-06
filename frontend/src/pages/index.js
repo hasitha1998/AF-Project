@@ -11,6 +11,7 @@ import GovAuthDashboard from "./gov-auth-dashboard";
 import ManageMaintenanceTeam from "./gov-manage-maintenanceTeam";
 import ManageComplaints from "./gov-manage-complaints";
 import CustomerLogin from "./customer-login";
+import AdminProfile from "./admin-profile";
 
 export {
   Home,
@@ -26,4 +27,5 @@ export {
   ManageMaintenanceTeam,
   ManageComplaints,
   CustomerLogin,
+  AdminProfile,
 };

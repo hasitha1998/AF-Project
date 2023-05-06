@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
+import CheckLoginStatus from "./CheckLoginStatus";
 
 // Pages
 import {
@@ -16,6 +18,7 @@ import {
   ManageMaintenanceTeam,
   ManageComplaints,
   CustomerLogin,
+  AdminProfile,
 } from "../pages";
 
 // Components
@@ -44,6 +47,7 @@ const AppRoutes = () => {
           <Route path="/gov/complaints" element={<ManageComplaints />} />
 
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/:id" element={<AdminProfile />} />
 
           {/* User Management Routes */}
           <Route path="/user/pending" element={<PendingAccount />} />

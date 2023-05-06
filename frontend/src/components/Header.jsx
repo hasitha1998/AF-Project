@@ -1,6 +1,21 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const permissionLevel = localStorage.getItem("permissionLevel");
+
+  const logout = () => {
+    localStorage.removeItem("uId");
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("permissionLevel");
+    navigate("/");
+    window.location.reload();
+    makeToast({ type: "success", message: "Logout Successful" });
+  };
+
   return (
     <header className="relative flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-4 dark:bg-gray-800">
       <nav
@@ -166,6 +181,15 @@ const Header = () => {
                 </Link>
               </div>
             </div>
+            {permissionLevel && (
+              <button
+                className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500" 
+                onClick={logout}
+                to="/"
+              >
+                Logout
+              </button>
+            )}
           </div>
         </div>
       </nav>

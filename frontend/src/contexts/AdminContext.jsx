@@ -63,7 +63,7 @@ export function AdminProvider({ children }) {
   //Get all Admin
   useEffect(() => {
     AdminAPI.getAdmins().then((response) => {
-      setOrders(response.data);
+      setAdmins(response.data);
     });
   }, []);
 
