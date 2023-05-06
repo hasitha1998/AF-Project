@@ -66,7 +66,7 @@ export function CustomerProvider({ children }) {
   };
 
 
-  // Get all customers
+  /*/ Get all customers
   const getAllCustomers = async () => {
     try {
       const response = await CustomerAPI.getCustomers();
@@ -76,11 +76,17 @@ export function CustomerProvider({ children }) {
       makeToast({ type: "error", message: "Failed to fetch customers" });
       console.log(err);
     }
-  };
+  };*/
   
   useEffect(() => {
-    getAllCustomers();
-  }, []);
+    try {
+      const response = CustomerAPI.getCustomers();
+      setCustomers(response.data);
+      //makeToast({ type: "success", message: "Customers fetched successfully" });
+    } catch (err) {
+      //makeToast({ type: "error", message: "Failed to fetch customers" });
+      console.log(err);
+    }  }, []);
   
 
    // Update customer
@@ -119,9 +125,7 @@ export function CustomerProvider({ children }) {
         setNicError,
         CustomerLogin,
         updateCustomer,
-        deleteCustomer,
-        getAllCustomers,
-        
+        deleteCustomer,        
       }}
     >
       {children}
