@@ -79,7 +79,7 @@ const status=localStorage.getItem("accountStatus")
      
       <div className="flex justify-center mt-2 gap-2">
       <button className="bg-red-700 w-36 py-1 rounded text-white shadow-lg hover:bg-red-900">Edit Profile</button>
-      <button className="bg-red-700 w-36 py-1 rounded text-white shadow-lg hover:bg-red-900">Create Complaint</button>
+      <Link to="/complaint/add" className="bg-red-700 w-36 py-1 rounded text-white shadow-lg hover:bg-red-900">Create Complaint</Link>
       </div>
       
     </div>

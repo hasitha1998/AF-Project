@@ -49,7 +49,7 @@ export function ComplaintProvider({ children }) {
 			setIsLoading(false);
 			alert("added successfully")
 			makeToast({ type: "success", message: "Complaint Added successfully" });
-			//navigate("/camping-vendor-dashboard");
+			navigate("/customer/dashboard");
 		} catch (error) {
 			// eslint-disable-next-line no-console
 			console.log(error);
