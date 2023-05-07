@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  frontend:
+    image: teambinarymatter/af-frontend:dev
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: af-frontend
+    ports:
+      - "5173:5173"
+    env_file:
+      - ./frontend/.env.development
+    networks:
+      - dev-network
+    restart: always
+
+  backend:
+    image: teambinarymatter/af-backend:dev
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: af-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    networks:
+      - dev-network
+    restart: always
+
+networks:
+  dev-network:
+    name: dev-network
+    driver: bridge
