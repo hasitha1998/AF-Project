@@ -1,34 +1,41 @@
 import { Link } from "react-router-dom";
+import undraw_Add_user_re_5oib from "../../assets/undraw_Add_user_re_5oib.png";
 
 const GovAuthDashboard = () => {
   return (
-    <div>
-      <h1>Goverment Authority Dashboard</h1>
+    <div className="flex flex-col mx-10 my-10">
+      <h1 className="text-3xl font-bold">Dashboard</h1>
 
-      <div className="flex flex-col space-y-2 w-1/2">
-        {/* Link to manage maintenance teams */}
+      <div className="flex flex-row justify-between mt-10">
         <Link
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           to="/gov/maintenanceTeam"
+          className="flex flex-col items-center justify-center w-1/4 h-32 p-4 mx-2 text-center text-white bg-blue-500 rounded-lg shadow-lg hover:bg-blue-600"
         >
-          Manage Maintenance Teams
+          <h1 className="text-2xl font-bold">Maintenance Team</h1>
         </Link>
 
-        {/* Link to manage complaints */}
         <Link
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           to="/gov/complaints"
+          className="flex flex-col items-center justify-center w-1/4 h-32 p-4 mx-2 text-center text-white bg-blue-500 rounded-lg shadow-lg hover:bg-blue-600"
         >
-          Manage Complaints
+          <h1 className="text-2xl font-bold">Complaints</h1>
         </Link>
 
-        {/* Link to Assign Complaints */}
         <Link
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           to="/gov/assignComplaints"
+          className="flex flex-col items-center justify-center w-1/4 h-32 p-4 mx-2 text-center text-white bg-blue-500 rounded-lg shadow-lg hover:bg-blue-600"
         >
-          Assign Complaints
+          <h1 className="text-2xl font-bold">Assign Complaints</h1>
         </Link>
+      </div>
+
+      {/* Image */}
+      <div className="flex flex-col items-center justify-center mt-10">
+        <img
+          src={undraw_Add_user_re_5oib}
+          alt="undraw_Add_user_re_5oib"
+          className="w-1/2"
+        />
       </div>
     </div>
   );

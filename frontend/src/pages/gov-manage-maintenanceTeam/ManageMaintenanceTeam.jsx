@@ -107,25 +107,25 @@ const ManageMaintenanceTeam = () => {
                     <tr>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                        className="px-6 py-3 text-left font-medium text-gray-500 uppercase"
                       >
                         Team Name
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                        className="px-6 py-3 text-left font-medium text-gray-500 uppercase"
                       >
                         Team Leader
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                        className="px-6 py-3 text-left font-medium text-gray-500 uppercase"
                       >
                         Status
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase"
+                        className="px-6 py-3 text-right font-medium text-gray-500 uppercase"
                       >
                         Action
                       </th>
@@ -147,13 +147,13 @@ const ManageMaintenanceTeam = () => {
                         )
                         .map((team) => (
                           <tr className="hover:bg-gray-100" key={team._id}>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                            <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
                               {team.teamName}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
+                            <td className="px-6 py-4 whitespace-nowrap text-gray-800">
                               {team.teamLeader}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
+                            <td className="px-6 py-4 whitespace-nowrap text-gray-800">
                               {team.teamStatus === "ASSIGNED" ? (
                                 <button
                                   className="text-green-500 font-bold hover:text-green-700 border-2 border-green-500 rounded-full px-3 py-1"
@@ -180,7 +180,7 @@ const ManageMaintenanceTeam = () => {
                                 </button>
                               )}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex gap-2 justify-end">
+                            <td className="px-6 py-4 whitespace-nowrap text-right font-medium flex gap-2 justify-end">
                               <button
                                 className="text-gray-500 hover:text-green-700"
                                 onClick={() => handleViewTeam(team)}
