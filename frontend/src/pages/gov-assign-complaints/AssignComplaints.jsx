@@ -67,33 +67,33 @@ const AssignComplaints = () => {
                   <tr>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                      className="px-6 py-3 text-left font-medium text-gray-500 uppercase"
                     >
                       Title
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                      className="px-6 py-3 text-left font-medium text-gray-500 uppercase"
                     >
                       Description
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                      className="px-6 py-3 text-left font-medium text-gray-500 uppercase"
                     >
                       Status
                     </th>
                     {/* Assigned Maintenance Team */}
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                      className="px-6 py-3 text-left font-medium text-gray-500 uppercase"
                     >
                       Assigned Team
                     </th>
 
                     <th
                       scope="col"
-                      className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase"
+                      className="px-6 py-3 text-right font-medium text-gray-500 uppercase"
                     >
                       Action
                     </th>
@@ -123,34 +123,45 @@ const AssignComplaints = () => {
                       )
                       .map((complain) => (
                         <tr className="hover:bg-gray-100" key={complain._id}>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                          <td className="px-6 py-2 whitespace-nowrap font-medium text-gray-800">
                             {complain.complaintTitle}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                          <td className="px-6 py-2 whitespace-nowrap font-medium text-gray-800">
                             {complain.description}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
-                            {complain.complaintStatus}
+                          <td className="px-6 py-2 whitespace-nowrap font-medium text-gray-800">
+                            {/* {complain.complaintStatus} */}
+                            {complain.complaintStatus === "assigned" ? (
+                              <span className="px-2 py-1 inline-flex leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                {complain.complaintStatus}
+                              </span>
+                            ) : (
+                              <span className="px-2 py-1 inline-flex leading-5 font-semibold rounded-full bg-gray-300 text-gray-700">
+                                {complain.complaintStatus}
+                              </span>
+                            )}
                           </td>
 
                           {/* Assigned Maintenance Team */}
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                          <td className="px-6 py-2 whitespace-nowrap font-medium text-gray-800">
                             {complain.assignedTeam?.teamName}
                           </td>
 
                           {/* Assign complaint to maintenance team */}
-                          <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                          <td className="px-6 py-2 whitespace-nowrap text-right font-medium">
                             <select
-                              className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"
+                              className="px-6 py-2 whitespace-nowrap font-medium text-gray-800"
                               onChange={(e) =>
                                 handleAssignComplaint(
                                   complain._id,
                                   e.target.value
                                 )
                               }
-                              value={complain.assignedTeam?.teamName}
+                              // value={complain.assignedTeam?.teamName}
                             >
-                              <option value="">Assign Team</option>
+                              <option value="" className="rounded-md">
+                                Assign Team
+                              </option>
                               {maintenanceTeams &&
                                 maintenanceTeams.map((team) => (
                                   <option value={team._id} key={team._id}>

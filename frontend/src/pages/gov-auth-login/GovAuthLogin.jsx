@@ -19,7 +19,7 @@ const GovAuthLogin = () => {
       localStorage.setItem("email", res.data.email);
       localStorage.setItem("name", res.data.name);
       makeToast({ type: "success", message: "Login Successful" });
-      navigate("/gov");
+      window.location.href = "/gov";
     },
     onError: (error) => {
       makeToast({
