@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 
 import ComplaintContext from "../../contexts/complaintContext";
 
-
 const AdminViewAllComplaints = () => {
   const { complaints, deleteComplaint } = useContext(ComplaintContext);
   const [searchTerm, setSearchTerm] = useState("");
@@ -103,17 +102,9 @@ const AdminViewAllComplaints = () => {
                     <td class="px-6 py-4"> {elem.province}</td>
                     <td class="px-6 py-4">{elem.district}</td>
                     <td class="px-6 py-4">
-                      {elem.authority == "LECO" ? (
-                        <>
-                          <span class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-md font-semibold text-violet-600">
-                            {elem.authority}
-                          </span>
-                        </>
-                      ) : (
-                        <span class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-md font-semibold text-red-600">
-                          {elem.authority}
-                        </span>
-                      )}
+                      <span class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-md font-semibold text-red-600">
+                        {elem.authority.name}
+                      </span>
                     </td>
                     <td class="px-6 py-4">{elem.citizenName}</td>
 
