@@ -49,7 +49,8 @@ export function ComplaintProvider({ children }) {
 			const response = await ComplaintAPI.createComplaint(newComplaint);
 			setComplaints([...complaints, response.data]);
 			setIsLoading(false);
-			alert("Data added successfully...");
+			alert("added successfully")
+			makeToast({ type: "success", message: "Complaint Added successfully" });
 			//navigate("/camping-vendor-dashboard");
 		} catch (error) {
 			// eslint-disable-next-line no-console
@@ -104,6 +105,7 @@ export function ComplaintProvider({ children }) {
 	const changeComplaintStatus = async (complaintId , status) => {
 		try {
 		  const { data } = await ComplaintAPI.changeComplaintStatus(complaintId, status);
+		  alert("added successfully...")
 		  makeToast({ type: "success", message: "Complaint status updated successfully" });
 		} catch (error) {
 		  console.log(error);
@@ -115,6 +117,7 @@ export function ComplaintProvider({ children }) {
 
 	const deleteComplaint = (id) => {
 		ComplaintAPI.deleteComplaint(id).then(() => {
+			makeToast({ type: "danger", message: "Complaint deleted successfully" });
 			setComplaints(complaints.filter((comp) => comp._id !== id));
 			makeToast({ type: "success", message: "Complaint Deleted successfully" });
 		});

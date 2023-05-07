@@ -14,6 +14,11 @@ const ComplaintAdd = () => {
 	const [image, setImage] = useState("");
 	const [url, setUrl] = useState("");
 
+	const name=localStorage.getItem("name");
+	const id=localStorage.getItem("uId")
+	const nic=localStorage.getItem("nic")
+
+
 	const onChangeAuthority = (event) => {
 		const value = event.target.value;
 		setAuthority(value);
@@ -68,9 +73,9 @@ const ComplaintAdd = () => {
             location:e.target.location.value,
             emergencyNo:e.target.emergencyNo.value,
             image:url,
-            citizenId:"values.citizenId",
-            citizenName:"values.citizenName",
-            citizenNIC:"values.citizenNIC",
+            citizenId:id,
+            citizenName:name,
+            citizenNIC:nic,
             complaintStatus:"pending",
 		};
 		addComplaint(newComplaint);
@@ -127,6 +132,8 @@ const ComplaintAdd = () => {
 											id="citizenName"
 											aria-describedby="emailHelp123"
 											placeholder=""
+											value={name}
+											readOnly="true"
 										></input>
 									</div>
 								</div>
@@ -135,7 +142,7 @@ const ComplaintAdd = () => {
 									<label htmlFor="fname">Emergency No</label>
 									<div className="flex ...">
 										<input
-											type="text"
+											type="number"
 											className="form-control block w-80 px-3 py-1.5 text-base border-red-800 font-normal text-gray-700 bg-white bg-clip-padding border border-solid rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
 											id="emergencyNo"
 											aria-describedby="emailHelp124"
