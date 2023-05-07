@@ -1,11 +1,12 @@
 import React from "react";
-import AdminDashboard from "./AdminDashboard";
+import AdminComplaintView from "./AdminComplaintView";
+
 import { AdminProvider } from "../../contexts/AdminContext";
 
 const index = () => {
   return (
     <AdminProvider>
-      <AdminDashboard />
+      <AdminComplaintView />
     </AdminProvider>
   );
 };

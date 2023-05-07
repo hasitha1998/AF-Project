@@ -2,6 +2,7 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ComplaintAPI from "./api/ComplaintAPI";
+import makeToast from "../components/toast";
 
 const BASE_URL = "http://localhost:5003/api/complaint";
 
@@ -118,6 +119,7 @@ export function ComplaintProvider({ children }) {
 		ComplaintAPI.deleteComplaint(id).then(() => {
 			makeToast({ type: "danger", message: "Complaint deleted successfully" });
 			setComplaints(complaints.filter((comp) => comp._id !== id));
+			makeToast({ type: "success", message: "Complaint Deleted successfully" });
 		});
 	};
 
@@ -132,6 +134,7 @@ export function ComplaintProvider({ children }) {
 				deleteComplaint,
 				setComplaint,
 				complaint,
+				
 			}}
 		>
 			{children}
