@@ -1,7 +1,7 @@
 import React from "react";
 import AdminComplaintPending from "./AdminComplaintPending";
 
-import { ComplaintProvider } from "../../contexts/complaintContext";
+import { ComplaintProvider } from "../../contexts/ComplaintContext";
 
 const index = () => {
   return (
