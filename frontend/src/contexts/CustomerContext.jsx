@@ -54,6 +54,7 @@ export function CustomerProvider({ children }) {
         localStorage.setItem("name", response.data.name);
         localStorage.setItem("email", response.data.email);
         localStorage.setItem("nic", response.data.nic);
+        localStorage.setItem("accountStatus", response.data.accountStatus);
         localStorage.setItem("authToken", response.data.token);
         localStorage.setItem("permissionLevel", response.data.permissionLevel);
 

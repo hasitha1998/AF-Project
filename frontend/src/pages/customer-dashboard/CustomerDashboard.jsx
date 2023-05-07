@@ -9,6 +9,8 @@ import ComplaintContext from "../../contexts/ComplaintContext";
 import CustomerContext from "../../contexts/CustomerContext";
 import { Link,useNavigate } from "react-router-dom";
 import {MdPendingActions} from "react-icons/md"
+import {TiTick} from "react-icons/ti"
+
 
 const CustomerDashboard = () => {
 
@@ -16,16 +18,37 @@ const CustomerDashboard = () => {
 	const { customers } = useContext(CustomerContext);
 
 const name=localStorage.getItem("name");
+const status=localStorage.getItem("accountStatus")
 
     return ( 
     <>
     <div className="px-16 bg-gray-100 py-10 ">
-    <div className="space-x-8 justify-right mt-32 md:mt-0 md:justify-center ml-[1250px]">
+      <div>
+      { status==="pending" ? (
+        <div className="space-x-8 justify-right mt-32 md:mt-0 md:justify-center ml-[1250px]">
         <div className="flex bg-amber-100 h-10 w-36 rounded border-2 border-amber-500 shadow-lg">
         <div className="font-semibold text-amber-700 py-1 ml-5 text-lg">Pending</div>
         <MdPendingActions className="fill-amber-700 w-8 h-6 ml-2 mt-[6px]"/>
         </div>
       </div>
+      ): status==="active" ?(
+        <div className="space-x-8 justify-right mt-32 md:mt-0 md:justify-center ml-[1250px]">
+        <div className="flex bg-green-100 h-10 w-36 rounded border-2 border-green-500 shadow-lg">
+        <div className="font-semibold text-green-700 py-1 ml-5 text-lg">Active</div>
+        <TiTick className="fill-green-700 w-8 h-6 ml-2 mt-[6px]"/>
+        </div>
+      </div>
+      ): status==='block' ?(
+        <div className="space-x-8 justify-right mt-32 md:mt-0 md:justify-center ml-[1250px]">
+        <div className="flex bg-red-100 h-10 w-36 rounded border-2 border-red-500 shadow-lg">
+        <div className="font-semibold text-red-700 py-1 ml-5 text-lg">Blocked</div>
+        <MdPendingActions className="fill-red-700 w-8 h-6 ml-2 mt-[6px]"/>
+        </div>
+      </div>
+      ):(<></>)
+      }
+      </div>
+      
   <div className="p-8 bg-white shadow mt-24">
     <div className="grid grid-cols-1 md:grid-cols-3">
       <div className="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
