@@ -14,6 +14,7 @@ import CustomerLogin from "./customer-login";
 import AdminProfile from "./admin-profile";
 import CustomerDashboard from "./customer-dashboard";
 import AdminComplaintView from "./admin-complaint-view";
+import AdminViewAllComplaints from "./admin-view-all-complaints";
 
 export {
   Home,
@@ -32,4 +33,5 @@ export {
   AdminProfile,
   CustomerDashboard,
   AdminComplaintView,
+  AdminViewAllComplaints,
 };

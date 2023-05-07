@@ -21,6 +21,7 @@ import {
   AdminProfile,
   CustomerDashboard,
   AdminComplaintView,
+  AdminViewAllComplaints,
 } from "../pages";
 
 // Components
@@ -57,6 +58,7 @@ const AppRoutes = () => {
             <Route exact path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/:id" element={<AdminProfile />} />
             <Route path="/admin/complaint" element={<AdminComplaintView />} />
+            <Route path="/admin/viewAllComplaints" element={<AdminViewAllComplaints />} />
           </Route>
 
           {/* User Management Routes */}
