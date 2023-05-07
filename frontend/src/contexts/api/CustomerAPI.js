@@ -46,6 +46,14 @@ class CustomerAPI {
   static deleteCustomer(id) {
     return axios.delete(`${BASE_URL}/api/customer/delete/${id}`, requestConfig);
   }
+
+  // changeComplaintStatus
+static async changeAccountStatus(id, status) {
+  const response = await axios.patch(`${BASE_URL}/api/customer/status/${id}`, { status }, requestConfigJson);
+  return response.data;
 }
+}
+
+
 
 export default CustomerAPI;
