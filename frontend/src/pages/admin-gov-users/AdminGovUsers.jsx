@@ -1,6 +1,26 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import GovAuthAPI from "../../contexts/api/GovAuthAPI";
+import makeToast from "../../components/toast";
+
+
 
 const AdminGovUsers = () => {
+  const [govUsers, setGovUsers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    GovAuthAPI.getGovAuths().then((response) => {
+      setGovUsers(response.data);
+    });
+  }, []);
+
+  const deleteGovUser = (id) => {
+    GovAuthAPI.deleteGovAuth(id).then(() => {
+			setGovUsers(govUsers.filter((elem) => elem._id !== id));
+			makeToast({ type: "success", message: "Government Authority deleted successful" });
+		});
+	};
+
   return (
     <>
       <h1 className="mt-5 mb-4 text-4xl text-center">
@@ -17,9 +37,9 @@ const AdminGovUsers = () => {
                 placeholder="Search Here"
                 aria-label="Search"
                 aria-describedby="button-addon3"
-                // onChange={(event) => {
-                //   setSearchTerm(event.target.value);
-                // }}
+                onChange={(event) => {
+                  setSearchTerm(event.target.value);
+                }}
               ></input>
             </div>
           </div>
@@ -31,23 +51,18 @@ const AdminGovUsers = () => {
           <thead class="bg-gray-50">
             <tr>
               <th scope="col" class="px-6 py-6 font-medium text-gray-900">
-                Title
+                Name
               </th>
 
               <th scope="col" class="px-6 py-4 font-medium text-gray-900">
-                State
+                Description
               </th>
               <th scope="col" class="px-6 py-6 font-medium text-gray-900">
-                Province
+                Email
               </th>
+
               <th scope="col" class="px-6 py-6 font-medium text-gray-900">
-                District
-              </th>
-              <th scope="col" class="px-6 py-6 font-medium text-gray-900">
-                Authority
-              </th>
-              <th scope="col" class="px-6 py-6 font-medium text-gray-900">
-                Complainer
+                Permission Level
               </th>
               <th scope="col" class="px-4 py-6 font-medium text-gray-900">
                 Action
@@ -56,63 +71,37 @@ const AdminGovUsers = () => {
           </thead>
 
           <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-            {/* {complaints &&
-              complaints
+            {govUsers &&
+              govUsers
                 .filter((val) => {
                   if (searchTerm == "") {
                     return val;
                   } else if (
-                    val.province
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase())
-                  ) {
-                    return val;
-                  } else if (
-                    val.district
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase())
-                  ) {
-                    return val;
-                  } else if (
-                    val.complaintStatus
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase())
+                    val.name.toLowerCase().includes(searchTerm.toLowerCase())
                   ) {
                     return val;
                   }
                 })
-                .map((elem) => ( */}
+                .map((elem) => (
                   <tr class="hover:bg-gray-50">
                     <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                       <div class="text-sm">
-                        <div class="font-medium text-gray-700">
-                         
-                        </div>
+                        <div class="font-medium text-gray-700">{elem.name}</div>
                       </div>
                     </th>
                     <td class="px-6 py-4">
                       <span class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold text-green-600">
                         <span class="h-1.5 w-1.5 rounded-full bg-green-600"></span>
-                      
+                        {elem.description}
                       </span>
                     </td>
-                    <td class="px-6 py-4"> </td>
-                    <td class="px-6 py-4"></td>
-                    <td class="px-6 py-4">
-                   
-                      
-                          <span class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-md font-semibold text-violet-600">
-                           
-                          </span>
-                    
-                      
-                    </td>
-                    <td class="px-6 py-4"></td>
+                    <td class="px-6 py-4"> {elem.email}</td>
+                    <td class="px-6 py-4">{elem.permissionLevel}</td>
 
                     <td class="px-6 py-4">
                       <div class="flex">
                         <a x-data="{ tooltip: 'Delete' }" href="#">
-                          <button >
+                          <button onClick={() => deleteGovUser(elem._id)}>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
@@ -133,7 +122,7 @@ const AdminGovUsers = () => {
                       </div>
                     </td>
                   </tr>
-        
+                ))}
           </tbody>
         </table>
       </div>
