@@ -59,11 +59,9 @@ const AppRoutes = () => {
             <Route path="/admin/:id" element={<AdminProfile />} />
             <Route path="/admin/complaint" element={<AdminComplaintView />} />
             <Route path="/admin/viewAllComplaints" element={<AdminViewAllComplaints />} />
+          <Route path="/admin/pending" element={<PendingAccount />} />
+          <Route path="/admin/userManage" element={<ManageUsers />} />
           </Route>
-
-          {/* User Management Routes */}
-          <Route path="/user/pending" element={<PendingAccount />} />
-          <Route path="/user/userManage" element={<ManageUsers />} />
 
           {/*Complaint Routes*/}
           <Route path="/complaint/add" element={<ComplaintAdd />} />
