@@ -1,50 +1,23 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
-import { useForm } from "react-hook-form";
-import MaintenanceTeamAPI from "../../contexts/api/MaintenanceTeamAPI";
-import { useMutation } from "@tanstack/react-query";
-import makeToast from "../../components/toast";
+import { Fragment, useContext, useState } from "react";
 
-export default function AddTeamModal({
-  isAddTeamModalOpen,
-  closeAddTeamModal,
-}) {
+import MaintenanceTeamContext from "../../contexts/MaintenanceTeamContext";
+
+export default function EditTeamModal() {
   const {
-    reset,
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  // React Query Mutation
-  const addTeammutation = useMutation({
-    mutationFn: (team) => MaintenanceTeamAPI.createMaintenanceTeam(team),
-    onSuccess: (res) => {
-      makeToast({ type: "success", message: "Team added successfully" });
-      closeAddTeamModal();
-    },
-    onError: (err) => {
-      makeToast({ type: "error", message: err.response.data.message });
-    },
-  });
-
-  const onSubmit = (data) => {
-    // contruct team object
-    const team = {
-      teamName: data.teamName,
-      teamLeader: data.teamLeader,
-      teamMembers: data.teamMembers.split(",").map((member) => member.trim()),
-    };
-
-    addTeammutation.mutate(team);
-
-    reset();
-  };
+    selectedTeam,
+    handleSubmitEditTeamForm,
+    editTeam,
+    registerEditTeamForm,
+    errorsEditTeamForm,
+    isEditTeamModalOpen,
+    closeEditTeamModal,
+  } = useContext(MaintenanceTeamContext);
 
   return (
     <>
-      <Transition appear show={isAddTeamModalOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeAddTeamModal}>
+      <Transition appear show={isEditTeamModalOpen} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={closeEditTeamModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -71,12 +44,17 @@ export default function AddTeamModal({
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-4xl font-medium leading-6 text-gray-900"
+                    className="text-3xl font-medium leading-6 text-gray-900"
                   >
-                    Add Team
+                    Edit Team
                   </Dialog.Title>
 
-                  <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
+                  <hr className="my-4" />
+
+                  <form
+                    onSubmit={handleSubmitEditTeamForm(editTeam)}
+                    className="mt-6"
+                  >
                     <div className="flex flex-col">
                       <label
                         htmlFor="teamName"
@@ -89,9 +67,12 @@ export default function AddTeamModal({
                         name="teamName"
                         id="teamName"
                         className="mt-2 p-2 border border-gray-400 rounded-md"
-                        {...register("teamName", { required: true })}
+                        {...registerEditTeamForm("teamName", {
+                          required: true,
+                        })}
+                        defaultValue={selectedTeam.teamName}
                       />
-                      {errors.teamName && (
+                      {errorsEditTeamForm.teamName && (
                         <span className="text-red-500">
                           This field is required
                         </span>
@@ -110,9 +91,12 @@ export default function AddTeamModal({
                         name="teamLeader"
                         id="teamLeader"
                         className="mt-2 p-2 border border-gray-400 rounded-md"
-                        {...register("teamLeader", { required: true })}
+                        {...registerEditTeamForm("teamLeader", {
+                          required: true,
+                        })}
+                        defaultValue={selectedTeam.teamLeader}
                       />
-                      {errors.teamLeader && (
+                      {errorsEditTeamForm.teamLeader && (
                         <span className="text-red-500">
                           This field is required
                         </span>
@@ -131,9 +115,12 @@ export default function AddTeamModal({
                         name="teamMembers"
                         id="teamMembers"
                         className="mt-2 p-2 border border-gray-400 rounded-md"
-                        {...register("teamMembers", { required: true })}
+                        {...registerEditTeamForm("teamMembers", {
+                          required: true,
+                        })}
+                        defaultValue={selectedTeam.teamMembers?.join(", ")}
                       />
-                      {errors.teamMembers && (
+                      {errorsEditTeamForm.teamMembers && (
                         <span className="text-red-500">
                           This field is required
                         </span>
@@ -144,7 +131,7 @@ export default function AddTeamModal({
                       <button
                         type="button"
                         className="px-4 py-2 bg-gray-200 text-gray-900 rounded-md"
-                        onClick={closeAddTeamModal}
+                        onClick={closeEditTeamModal}
                       >
                         Cancel
                       </button>

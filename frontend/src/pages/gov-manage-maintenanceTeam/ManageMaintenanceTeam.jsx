@@ -1,24 +1,24 @@
 import MaintenanceTeamAPI from "../../contexts/api/MaintenanceTeamAPI";
 import { useQuery } from "@tanstack/react-query";
 import makeToast from "../../components/toast";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import { AiOutlineEdit, AiFillEye } from "react-icons/ai";
 import AddTeamModal from "./AddTeamModal";
 import ViewTeamModal from "./ViewTeamModal";
+import EditTeamModal from "./EditTeamModal";
+
+import MaintenanceTeamContext from "../../contexts/MaintenanceTeamContext";
 
 const ManageMaintenanceTeam = () => {
-  const [teams, setTeams] = useState([]);
-  const [selectedTeam, setSelectedTeam] = useState("");
-
-  // Get all maintenance teams
-  const { isLoading: teamsLoading, refetch: refetchTeams } = useQuery({
-    queryKey: ["team"],
-    queryFn: MaintenanceTeamAPI.getAllMaintenanceTeams,
-    onSuccess: (res) => {
-      setTeams(res.data);
-    },
-  });
+  const {
+    teamsLoading,
+    refetchTeams,
+    teams,
+    selectedTeam,
+    setSelectedTeam,
+    openEditTeamModal,
+  } = useContext(MaintenanceTeamContext);
 
   // Add maintenance team modal state
   let [isAddTeamModalOpen, setIsAddTeamModalOpen] = useState(false);
@@ -69,6 +69,12 @@ const ManageMaintenanceTeam = () => {
     openViewTeamModal();
   };
 
+  // Handle edit team
+  const handleEditTeam = (team) => {
+    setSelectedTeam(team);
+    openEditTeamModal();
+  };
+
   return (
     <>
       <AddTeamModal
@@ -80,6 +86,7 @@ const ManageMaintenanceTeam = () => {
         closeViewTeamModal={closeViewTeamModal}
         selectedTeam={selectedTeam}
       />
+      <EditTeamModal />
       <div className="flex flex-col mx-10 my-10">
         <div className="flex flex-row justify-between">
           <h1 className="text-3xl text-black">Manage Maintenance Teams</h1>
@@ -182,7 +189,10 @@ const ManageMaintenanceTeam = () => {
                                 <AiFillEye className="text-4xl" />
                               </button>
 
-                              <button className="text-gray-500 hover:text-blue-700">
+                              <button
+                                className="text-gray-500 hover:text-blue-700"
+                                onClick={() => handleEditTeam(team)}
+                              >
                                 <AiOutlineEdit className="text-4xl" />
                               </button>
 

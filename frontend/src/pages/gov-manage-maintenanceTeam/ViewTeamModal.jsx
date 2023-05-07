@@ -52,7 +52,7 @@ export default function ViewTeamModal({
                   <div className="mt-2">
                     <p className="text-lg">Team Members:</p>
                     <ul className="list-disc list-inside">
-                      {selectedTeam.teamMembers.map((member) => (
+                      {selectedTeam.teamMembers?.map((member) => (
                         <li key={member}>{member}</li>
                       ))}
                     </ul>
