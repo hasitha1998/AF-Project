@@ -3,7 +3,6 @@ import AdminViewAllComplaints from "./AdminViewAllComplaints";
 
 import { ComplaintProvider } from "../../contexts/ComplaintContext";
 
-
 const index = () => {
   return (
    
