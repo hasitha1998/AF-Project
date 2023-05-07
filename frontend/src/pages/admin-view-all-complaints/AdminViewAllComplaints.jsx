@@ -9,12 +9,10 @@ const AdminViewAllComplaints = () => {
 
   return (
     <>
-      <h1 className="mt-5 mb-4 text-4xl text-center">All Complaints</h1>
-
       <div className="flex justify-center">
         <div className="flex justify-center">
           <div className="mb-3 xl:w-96">
-            <div className="input-group relative flex flex-wrap items-stretch w-full">
+            <div className="input-group relative flex flex-wrap items-stretch w-full mt-10">
               <input
                 type="search"
                 className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -107,7 +105,7 @@ const AdminViewAllComplaints = () => {
                         {elem.authority.name}
                       </span>
                     </td>
-                    <td class="px-6 py-4">{elem.citizenName}</td>
+                    <td class="px-6 py-4">{elem.citizenId.name}</td>
 
                     <td class="px-6 py-4">
                       <div class="flex">

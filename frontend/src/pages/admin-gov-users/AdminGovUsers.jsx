@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import GovAuthAPI from "../../contexts/api/GovAuthAPI";
 import makeToast from "../../components/toast";
 
-
-
 const AdminGovUsers = () => {
   const [govUsers, setGovUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,21 +14,20 @@ const AdminGovUsers = () => {
 
   const deleteGovUser = (id) => {
     GovAuthAPI.deleteGovAuth(id).then(() => {
-			setGovUsers(govUsers.filter((elem) => elem._id !== id));
-			makeToast({ type: "success", message: "Government Authority deleted successful" });
-		});
-	};
+      setGovUsers(govUsers.filter((elem) => elem._id !== id));
+      makeToast({
+        type: "success",
+        message: "Government Authority deleted successful",
+      });
+    });
+  };
 
   return (
     <>
-      <h1 className="mt-5 mb-4 text-4xl text-center">
-        All Gov.Authority Users
-      </h1>
-
       <div className="flex justify-center">
         <div className="flex justify-center">
           <div className="mb-3 xl:w-96">
-            <div className="input-group relative flex flex-wrap items-stretch w-full">
+            <div className="input-group relative flex flex-wrap items-stretch w-full mt-10">
               <input
                 type="search"
                 className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
