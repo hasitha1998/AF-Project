@@ -3,7 +3,7 @@ import ComplaintService from "../services";
 // Insert one Complaint
 export const insertComplaint = async (request, response, next) => {
 
-   const{complaintTitle,description,authority,province,district,location,emergencyNo,image,citizenId,citizenName,citizenNIC,complaintStatus,isPublish,assignedTeam}=request.body;
+   const{complaintTitle,description,authority,province,district,location,emergencyNo,image,citizenId,complaintStatus,isPublish,assignedTeam}=request.body;
     await ComplaintService.insertComplaint(
        {
        complaintTitle,
@@ -15,8 +15,6 @@ export const insertComplaint = async (request, response, next) => {
        emergencyNo,
        image,
        citizenId,
-       citizenName,
-       citizenNIC,
        complaintStatus,
        isPublish,
        assignedTeam

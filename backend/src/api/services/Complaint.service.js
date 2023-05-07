@@ -17,6 +17,7 @@ export const getAllComplaints = async () => {
 	return await ComplaintModel.find({})
 		// name and description of the authority
 		.populate("authority", "name description")
+		.populate("citizenId", "name nic")
 		.then((complaints) => {
 			return complaints;
 		})
