@@ -1,9 +1,13 @@
 import ManageMaintenanceTeam from "./ManageMaintenanceTeam";
 
+import { MaintenanceTeamProvider } from "../../contexts/MaintenanceTeamContext";
+
 const index = () => {
   return (
     <>
-      <ManageMaintenanceTeam />
+      <MaintenanceTeamProvider>
+        <ManageMaintenanceTeam />
+      </MaintenanceTeamProvider>
     </>
   );
 };

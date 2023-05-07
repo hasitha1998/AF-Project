@@ -7,6 +7,7 @@ import {
 	deleteComplaint,
 	changeComplaintStatus,
 	searchComplaints,
+	getAllComplaintsByAuthority,
 } from "./Complaint.service";
 
 import { insertAdmin, authenticateAdmin, getAllAdmins, getOneAdmin, updateAdmin, deleteAdmin } from "./Admin.service";
@@ -56,6 +57,7 @@ export default {
 	deleteComplaint,
 	changeComplaintStatus,
 	searchComplaints,
+	getAllComplaintsByAuthority,
 
 	// Customer Services
 	insertCustomer,

@@ -12,8 +12,8 @@ const ComplaintSchema = new mongoose.Schema({
 		required: true,
 	},
 	authority:{
-		type:String,
-		required: true,
+		type:mongoose.Schema.Types.ObjectId,
+		ref:"GovAuthority",
 	},
 	province: {
 		type: String,
