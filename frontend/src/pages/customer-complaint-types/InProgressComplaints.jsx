@@ -19,6 +19,7 @@ const InProgressComplaints = () => {
 
     return ( 
         <>
+		{!complaints!= "" ?(
         <div>
         <div className="flex gap-2 ml-[400px]">
 				<input
@@ -59,7 +60,7 @@ const InProgressComplaints = () => {
 							} else if (val.complaintTitle.toLowerCase().includes(searchTerm.toLowerCase())) {
 								return val;
 							}
-						}).filter((elem) => elem.complaintStatus == "inProgress" && elem.citizenId===id)
+						}).filter((elem) => elem.complaintStatus == "inProgress" && elem.citizenId._id===id)
 						.map((complaint, key) => (
 							<tbody className="divide-y divide-gray-100 border-t border-gray-100 h-24" key={key}>
 								<tr className="hover:bg-gray-50">
@@ -97,7 +98,10 @@ const InProgressComplaints = () => {
 						))}
 					</table>
 				</div>
-        </div>
+        </div>):(<div className="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
+				<img src="/noComplaints.svg" className="ml-[500px] w-72 h-72 px-10 py-10"/>
+				<div className="font font-semibold text-2xl ml-[480px] mb-10" >No In Progress Complaints</div>
+			</div>)}
         </>
      );
 }
