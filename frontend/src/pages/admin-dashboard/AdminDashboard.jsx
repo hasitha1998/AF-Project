@@ -255,7 +255,7 @@ const AdminDashboard = () => {
                   <center>
                     <div className="border-t border-white/5 p-4">
                       <Link to="/admin/pending">
-                        <button className="bg-red-500 text-white px-4 py-2 rounded-lg mt-4">
+                        <button className="bg-red-700 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
                       </Link>
@@ -281,7 +281,7 @@ const AdminDashboard = () => {
                   <center>
                     <div className="border-t border-white/5 p-4">
                       <Link to="/admin/userManage">
-                        <button className="bg-red-500 text-white px-4 py-2 rounded-lg mt-4">
+                        <button className="bg-red-700 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
                       </Link>
@@ -305,14 +305,14 @@ const AdminDashboard = () => {
                   <div>
                     <img
                       className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover"
-                      src="../pending.png"
+                      src="../pending1.png"
                       alt=""
                     />
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
                       <Link to="/admin/pendingComplaints">
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
+                        <button className="bg-red-700 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
                       </Link>
@@ -328,15 +328,15 @@ const AdminDashboard = () => {
                   </div>
                   <div>
                     <img
-                      className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover"
-                      src="../pending.png"
+                      className=" ml-2 w-[12rem] h-[12rem] relative object-cover"
+                      src="../todo.png"
                       alt=""
                     />
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
                       <Link to="/admin/assignComplaints">
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
+                        <button className="bg-red-700 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
                       </Link>
@@ -354,15 +354,15 @@ const AdminDashboard = () => {
                   </div>
                   <div>
                     <img
-                      className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover"
-                      src="../pending.png"
+                      className=" ml-2 w-[12rem] h-[12rem] relative object-cover"
+                      src="../Progress.png"
                       alt=""
                     />
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
                       <Link to="/admin/inprogressComplaints">
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
+                        <button className="bg-red-700 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
                       </Link>
@@ -378,14 +378,14 @@ const AdminDashboard = () => {
                   <div>
                     <img
                       className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover"
-                      src="../pending.png"
+                      src="../Assigned1.png"
                       alt=""
                     />
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
                       <Link to="/admin/resolvedComplaints">
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
+                        <button className="bg-red-700 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
                       </Link>
