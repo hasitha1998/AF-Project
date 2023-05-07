@@ -19,6 +19,7 @@ import {
 	getAllCustomers,
 	updateCustomer,
 	deleteCustomer,
+	changeAccountStatus,
 } from "./Customer.controller";
 
 import {
@@ -65,6 +66,7 @@ export default {
 	getAllCustomers,
 	updateCustomer,
 	deleteCustomer,
+	changeAccountStatus,
 
 	// GovAuthority Controllers
 	registerGovAuthority,

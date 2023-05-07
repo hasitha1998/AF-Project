@@ -18,6 +18,7 @@ import {
 	getOneCustomer,
 	updateCustomer,
 	deleteCustomer,
+	changeAccountStatus,
 } from "./Customer.service";
 
 import {
@@ -63,6 +64,7 @@ export default {
 	getOneCustomer,
 	updateCustomer,
 	deleteCustomer,
+	changeAccountStatus,
 
 	// GovAuthority Services
 	insertGovAuthority,
