@@ -7,7 +7,7 @@ const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 class MaintenanceTeamAPI {
   // MaintenanceTeam Create
   static createMaintenanceTeam(values) {
-    return axios.post(`${BASE_URL}/api/team/create`, values, requestConfigJson);
+    return axios.post(`${BASE_URL}/api/team`, values, requestConfigJson);
   }
 
   // MaintenanceTeam Get All
