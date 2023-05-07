@@ -13,20 +13,20 @@ services:
     networks:
       - dev-network
     restart: always
-  
-  # backend:
-  #   image: backend:dev
-  #   build:
-  #     context: ./backend
-  #     dockerfile: Dockerfile.dev
-  #   container_name: backend
-  #   ports:
-  #     - "5000:5000"
-  #   env_file:
-  #     - ./backend/.env
-  #   networks:
-  #     - dev-network
-  #   restart: always
+
+  backend:
+    image: teambinarymatter/af-backend:dev
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: af-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    networks:
+      - dev-network
+    restart: always
 
 networks:
   dev-network:
