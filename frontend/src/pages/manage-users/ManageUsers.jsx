@@ -1,79 +1,207 @@
+import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import CustomerContext from "../../contexts/CustomerContext";
+import CustomerAPI from "../../contexts/api/CustomerAPI";
+import makeToast from "../../components/toast";
+import { FaUser, FaTrash, FaEdit} from 'react-icons/fa';
+
+
+const status="block"
+
+// Change account status
+const changeAccountStatus = async (customerId , status) => {
+  try {
+    const { data } = await CustomerAPI.changeAccountStatus(customerId, status);
+    //makeToast({ type: "success", message: "Account blocked successfully" });
+    alert("Account blocked successfully");
+
+  } catch (error) {
+    console.log(error);
+   makeToast({ type: "error", message: "Something went wrong" });
+   
+  }
+  window.location.reload(true);
+  };
+
+  const activeStatus="active"
+
+// Change account status
+const changeAccountStatusActive = async (customerId , activeStatus) => {
+  try {
+    const { data } = await CustomerAPI.changeAccountStatus(customerId, activeStatus);
+    makeToast({ type: "success", message: "Account Activated successfully" });
+  } catch (error) {
+    console.log(error);
+   makeToast({ type: "error", message: "Something went wrong" });
+  }
+  window.location.reload(true);
+  };
+
 const ManageUsers = () => {
+  const { customers, deleteCustomer } = useContext(CustomerContext);
     return(
-        <div>
-            <h1 className="text-2xl font-bold mb-4">Manage Users</h1>
-            <div id="last-users">
-              <h1 className="font-bold py-4 uppercase">Last 24h users</h1>
-              <div className="overflow-x-scroll">
-                <table className="w-full whitespace-nowrap">
-                  <thead className="bg-black/60">
-                    <tr><th className="text-left py-3 px-2 rounded-l-lg">Name</th>
-                      <th className="text-left py-3 px-2">Email</th>
-                      <th className="text-left py-3 px-2">Group</th>
-                      <th className="text-left py-3 px-2">Status</th>
-                      <th className="text-left py-3 px-2 rounded-r-lg">Actions</th>
-                    </tr></thead>
-                  <tbody><tr className="border-b border-gray-700">
-                      <td className="py-3 px-2 font-bold">
-                        <div className="inline-flex space-x-3 items-center">
-                          <span><img className="rounded-full w-8 h-8" src="https://images.generated.photos/tGiLEDiAbS6NdHAXAjCfpKoW05x2nq70NGmxjxzT5aU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTM4ODM1LmpwZw.jpg" alt="" /></span>
-                          <span>Thai Mei</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-2">thai.mei@abc.com</td>
-                      <td className="py-3 px-2">User</td>
-                      <td className="py-3 px-2">Approved</td>
-                      <td className="py-3 px-2">
-                        <div className="inline-flex items-center space-x-3">
-                          <a href title="Edit" className="hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                            </svg>
-                          </a>
-                          <a href title="Edit password" className="hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                            </svg>
-                          </a>
-                          <a href title="Suspend user" className="hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-                            </svg>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b border-gray-700">
-                      <td className="py-3 px-2 font-bold">
-                        <div className="inline-flex space-x-3 items-center">
-                          <span><img className="rounded-full w-8 h-8" src="https://images.generated.photos/tGiLEDiAbS6NdHAXAjCfpKoW05x2nq70NGmxjxzT5aU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTM4ODM1LmpwZw.jpg" alt="" /></span>
-                          <span>Thai Mei</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-2">thai.mei@abc.com</td>
-                      <td className="py-3 px-2">User</td>
-                      <td className="py-3 px-2">Approved</td>
-                      <td className="py-3 px-2">
-                        <div className="inline-flex items-center space-x-3">
-                          <a href title="Edit" className="hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                            </svg>
-                          </a>
-                          <a href title="Edit password" className="hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                            </svg>
-                          </a>
-                          <a href title="Suspend user" className="hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-                            </svg>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                    
-                    
-                    
-                  </tbody></table>
-              </div>
-            </div>
-        </div>
+      
+      <div className="p-3">
+        <div className="flex ">
+  <div className="border-t border-white/5 p-4">
+    <Link to="/admin">
+      <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
+        Back to Dashboard
+      </button>
+    </Link>
+  </div>
+  </div>
+      <h1 className="text-xl font-bold mb-4">Active Accounts</h1>
+      <div className="bg-white shadow-md rounded my-6">
+        <table className="w-full table-auto">
+          <thead>
+            <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+              <th className="py-3 px-6 text-center">Customer Name</th>
+              <th className="py-3 px-6 text-center">NIC</th>
+              
+              
+              <th className="py-3 px-6 text-center">front image</th>
+              <th className="py-3 px-6 text-center">back image</th>
+              <th className="py-3 px-6 text-center">Account Status</th>
+              <th className="py-3 px-6 text-center">change status</th>
+              <th className="py-3 px-6 text-center">Action</th>
+              
+            </tr>
+          </thead>
+          <tbody className="text-gray-600 text-sm font-light">
+          
+            {customers
+            .filter((elem) => elem.accountStatus === "active" || elem.accountStatus==="blocked")
+            .map((customer) => (
+              <tr
+                key={customer._id}
+                className="border-b border-gray-200 hover:bg-gray-100"
+              >
+<td className="py-3 px-6 text-left whitespace-nowrap text-lg font-bold">
+  <FaUser className="inline-block mr-2 text-gray-500" />
+  <Link to={`/customer/${customer._id}`}>{customer.name}</Link>
+</td>                
+                <td className="py-3 px-6 text-center text-lg font-bold">{customer.nic}</td>
+                <td>
+                  <div className="relative">
+											<img
+												className="h-36 w-36 rounded-lg object-cover object-center"
+												src={customer.imageFront}
+												alt=""
+											/>
+                      
+										</div>
+                  </td>
+                  <td>
+                  <div className="relative">
+											
+                      <img
+												className="h-36 w-36 rounded-lg object-cover object-center"
+												src={customer.imageBack}
+												alt=""
+											/>
+										</div>
+
+                  </td>
+                  <td className="py-3 px-6 text-center text-lg font-bold">{customer.accountStatus}</td>
+                <td><button
+                    className=" bg-red-500 text-white py-2 px-2 ml-[5rem] rounded-md hover:bg-red-600 transition-colors"
+                    onClick={() => changeAccountStatus(customer._id,status)}
+                  >
+                    Block User
+                  </button></td>
+
+                  <td><Link to={`/editprofile/${customer._id}`}>
+    <button className="ml-[4rem] text-yellow-600 text-lg font-bold">
+      <FaEdit className="ml-[10px]" /> Edit
+    </button>
+  </Link></td>
+
+                 
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+       
+      </div>
+      <h1 className="text-xl font-bold mb-4">Blocked Accounts</h1>
+      <div className="bg-white shadow-md rounded my-6">
+        <table className="w-full table-auto">
+          <thead>
+            <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+              <th className="py-3 px-6 text-center">Customer Name</th>
+              <th className="py-3 px-6 text-center">NIC</th>
+              
+              
+              <th className="py-3 px-6 text-center">front image</th>
+              <th className="py-3 px-6 text-center">back image</th>
+              <th className="py-3 px-6 text-center">Account Status</th>
+              <th className="py-3 px-6 text-center">change status</th>
+              <th className="py-3 px-6 text-center">Action</th>
+              
+            </tr>
+          </thead>
+          <tbody className="text-gray-600 text-sm font-light">
+          
+            {customers
+            .filter((elem) => elem.accountStatus==="block")
+            .map((customer) => (
+              <tr
+                key={customer._id}
+                className="border-b border-gray-200 hover:bg-gray-100"
+              >
+<td className="py-3 px-6 text-left whitespace-nowrap text-lg font-bold">
+  <FaUser className="inline-block mr-2 text-gray-500" />
+  <Link to={`/customer/${customer._id}`}>{customer.name}</Link>
+</td>                
+<td className="py-3 px-6 text-center text-lg font-bold">{customer.nic}</td>
+<td>
+  <div className="relative">
+    <img
+      className="h-36 w-36 rounded-lg object-cover object-center"
+      src={customer.imageFront}
+      alt=""
+    />
+  </div>
+</td>
+<td>
+  <div className="relative">
+    <img
+      className="h-36 w-36 rounded-lg object-cover object-center"
+      src={customer.imageBack}
+      alt=""
+    />
+  </div>
+</td>
+<td className="py-3 px-6 text-center text-lg font-bold">{customer.accountStatus}</td>
+
+
+
+                  <td><button
+                    className=" bg-green-500 text-white py-2 px-2 ml-[5rem] rounded-md hover:bg-green-600 transition-colors"
+                    onClick={() => changeAccountStatusActive(customer._id,activeStatus)}
+                  >
+                    Active User
+                  </button></td>
+                
+
+                  <td>
+  <button className="ml-[4rem] text-red-600 object-center text-lg font-bold" onClick={() => deleteCustomer(customer._id)}>
+    <FaTrash className="ml-[1rem]" />Delete
+  </button>
+  
+</td>
+
+                 
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+       
+      </div>
+    </div>
     )
 }
 

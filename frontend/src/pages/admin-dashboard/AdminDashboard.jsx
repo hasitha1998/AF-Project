@@ -19,9 +19,9 @@ const AdminDashboard = () => {
             "\n    :root { font-family: 'Inter', sans-serif; }\n@supports (font-variation-settings: normal) {\n  :root { font-family: 'Inter var', sans-serif; }\n}\n",
         }}
       />
-      <div className="antialiased bg-black w-full min-h-screen text-slate-300 relative py-4">
+      <div className="antialiased bg-white w-full min-h-screen text-white relative py-4">
         <div className="grid grid-cols-12 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
-          <div id="menu" className="bg-white/20 col-span-3 rounded-lg p-4 ">
+          <div id="menu" className="bg-gray-500 col-span-3 rounded-lg p-4 ">
             <h1 className="font-bold text-lg lg:text-3xl bg-gradient-to-br from-white via-white/50 to-transparent bg-clip-text text-transparent">
               Dashboard<span className="text-indigo-400">.</span>
             </h1>
@@ -41,7 +41,7 @@ const AdminDashboard = () => {
                 <p className="font-medium group-hover:text-indigo-400 leading-4">
                   {admin.name}
                 </p>
-                <span className="text-xs text-slate-400">
+                <span className="text-xs text-white font-bold">
                   {admin.permissionLevel}
                 </span>
               </div>
@@ -190,7 +190,7 @@ const AdminDashboard = () => {
               </a>
             </div>
           </div>
-          <div id="content" className="bg-red-500 col-span-9 rounded-lg p-6">
+          <div id="content" className="bg-gray-500 col-span-9 rounded-lg p-6">
             <div id="24h">
               <div
                 id="stats"
@@ -222,7 +222,7 @@ const AdminDashboard = () => {
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
-                      <Link to="/user/pending">
+                      <Link to="/admin/pending">
                         <button className="bg-red-500 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
@@ -248,64 +248,16 @@ const AdminDashboard = () => {
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
-                      <Link to="/user/userManage">
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
+                      <Link to="/admin/userManage">
+                        <button className="bg-red-500 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
                       </Link>
                     </div>
                   </center>
                 </div>
-                <div className="bg-white to-white/5 rounded-lg">
-                  <div className="flex flex-row items-center">
-                    <div className="p-2">
-                      <p className="text-xl font-bold text-black">
-                        Pending Accounts
-                      </p>
-                    </div>
-                  </div>
-                  <div>
-                    <img
-                      className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover"
-                      src="../pending.png"
-                      alt=""
-                    />
-                  </div>
-                  <center>
-                    <div className="border-t border-white/5 p-4">
-                      <Link to="/user/pending">
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
-                          Click Here
-                        </button>
-                      </Link>
-                    </div>
-                  </center>
-                </div>
-                <div className="bg-white to-white/5 rounded-lg">
-                  <div className="flex flex-row items-center">
-                    <div className="p-2">
-                      <p className="text-xl font-bold text-black">
-                        Pending Accounts
-                      </p>
-                    </div>
-                  </div>
-                  <div>
-                    <img
-                      className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover"
-                      src="../pending.png"
-                      alt=""
-                    />
-                  </div>
-                  <center>
-                    <div className="border-t border-white/5 p-4">
-                      <Link to="/user/pending">
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
-                          Click Here
-                        </button>
-                      </Link>
-                    </div>
-                  </center>
-                </div>
+                
+                
               </div>
             </div>
             <div id="last-incomes">
@@ -353,6 +305,7 @@ const AdminDashboard = () => {
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
+
                       <Link to="/admin/assignComplaints">
                         <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
@@ -379,6 +332,7 @@ const AdminDashboard = () => {
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
+
                       <Link to="/admin/inprogressComplaints">
                         <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
@@ -412,181 +366,7 @@ const AdminDashboard = () => {
                 </div>
               </div>
             </div>
-            <div id="last-users">
-              <h1 className="font-bold py-4 uppercase">Last 24h users</h1>
-              <div className="overflow-x-scroll">
-                <table className="w-full whitespace-nowrap">
-                  <thead className="bg-black/60">
-                    <tr>
-                      <th className="text-left py-3 px-2 rounded-l-lg">Name</th>
-                      <th className="text-left py-3 px-2">Email</th>
-                      <th className="text-left py-3 px-2">Group</th>
-                      <th className="text-left py-3 px-2">Status</th>
-                      <th className="text-left py-3 px-2 rounded-r-lg">
-                        Actions
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-gray-700">
-                      <td className="py-3 px-2 font-bold">
-                        <div className="inline-flex space-x-3 items-center">
-                          <span>
-                            <img
-                              className="rounded-full w-8 h-8"
-                              src="https://images.generated.photos/tGiLEDiAbS6NdHAXAjCfpKoW05x2nq70NGmxjxzT5aU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTM4ODM1LmpwZw.jpg"
-                              alt=""
-                            />
-                          </span>
-                          <span>Thai Mei</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-2">thai.mei@abc.com</td>
-                      <td className="py-3 px-2">User</td>
-                      <td className="py-3 px-2">Approved</td>
-                      <td className="py-3 px-2">
-                        <div className="inline-flex items-center space-x-3">
-                          <a href title="Edit" className="hover:text-white">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth="1.5"
-                              stroke="currentColor"
-                              className="w-5 h-5"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                              />
-                            </svg>
-                          </a>
-                          <a
-                            href
-                            title="Edit password"
-                            className="hover:text-white"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth="1.5"
-                              stroke="currentColor"
-                              className="w-5 h-5"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
-                              />
-                            </svg>
-                          </a>
-                          <a
-                            href
-                            title="Suspend user"
-                            className="hover:text-white"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth="1.5"
-                              stroke="currentColor"
-                              className="w-5 h-5"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
-                              />
-                            </svg>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b border-gray-700">
-                      <td className="py-3 px-2 font-bold">
-                        <div className="inline-flex space-x-3 items-center">
-                          <span>
-                            <img
-                              className="rounded-full w-8 h-8"
-                              src="https://images.generated.photos/tGiLEDiAbS6NdHAXAjCfpKoW05x2nq70NGmxjxzT5aU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTM4ODM1LmpwZw.jpg"
-                              alt=""
-                            />
-                          </span>
-                          <span>Thai Mei</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-2">thai.mei@abc.com</td>
-                      <td className="py-3 px-2">User</td>
-                      <td className="py-3 px-2">Approved</td>
-                      <td className="py-3 px-2">
-                        <div className="inline-flex items-center space-x-3">
-                          <a href title="Edit" className="hover:text-white">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth="1.5"
-                              stroke="currentColor"
-                              className="w-5 h-5"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                              />
-                            </svg>
-                          </a>
-                          <a
-                            href
-                            title="Edit password"
-                            className="hover:text-white"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth="1.5"
-                              stroke="currentColor"
-                              className="w-5 h-5"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
-                              />
-                            </svg>
-                          </a>
-                          <a
-                            href
-                            title="Suspend user"
-                            className="hover:text-white"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth="1.5"
-                              stroke="currentColor"
-                              className="w-5 h-5"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
-                              />
-                            </svg>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+           </div>
         </div>
       </div>
     </div>
