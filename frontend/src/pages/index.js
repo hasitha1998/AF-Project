@@ -17,6 +17,7 @@ import AdminViewAllComplaints from "./admin-view-all-complaints";
 import AdminComplaintPending from "./admin-complaint-pending";
 import AdminComplaintAssign from "./admin-complaint-assign";
 import AdminComplaintInprogress from "./admin-complaint-inprogress";
+import AdminComplaintResolved from "./admin-complaint-resolved";
 
 export {
   Home,
@@ -38,4 +39,5 @@ export {
   AdminComplaintPending,
   AdminComplaintAssign,
   AdminComplaintInprogress,
+  AdminComplaintResolved,
 };

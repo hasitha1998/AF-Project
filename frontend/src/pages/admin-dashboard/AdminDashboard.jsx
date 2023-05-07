@@ -365,7 +365,7 @@ const AdminDashboard = () => {
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
-                      <Link to="/user/pending">
+                      <Link to="/admin/resolvedComplaints">
                         <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
