@@ -27,6 +27,7 @@ import {
   AdminComplaintResolved,
   AdminGovUsers,
   AssignComplaints,
+  AdminFeedManagement,
 } from "../pages";
 
 // Components
@@ -102,6 +103,8 @@ const AppRoutes = () => {
               element={<AdminComplaintResolved />}
             />
             <Route path="/admin/govUsers" element={<AdminGovUsers />} />
+
+            <Route path="/admin/feedManagement" element={<AdminFeedManagement />} />
           </Route>
 
           {/*Complaint Routes*/}

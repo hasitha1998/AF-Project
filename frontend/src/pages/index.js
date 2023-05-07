@@ -29,6 +29,7 @@ import AdminComplaintAssign from "./admin-complaint-assign";
 import AdminComplaintInprogress from "./admin-complaint-inprogress";
 import AdminComplaintResolved from "./admin-complaint-resolved";
 import AdminGovUsers from "./admin-gov-users";
+import AdminFeedManagement from "./admin-feed-management";
 
 export {
   Home,
@@ -58,4 +59,5 @@ export {
   AdminComplaintInprogress,
   AdminComplaintResolved,
   AdminGovUsers,
+  AdminFeedManagement,
 };
