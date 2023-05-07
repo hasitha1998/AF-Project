@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ComplaintContext from "../../contexts/complaintContext";
+import ComplaintContext from "../../contexts/ComplaintContext";
 
 const AdminComplaintAssign = ()=> {
     const { complaints, deleteComplaint } = useContext(ComplaintContext);
