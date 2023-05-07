@@ -21,7 +21,7 @@ const AssignedComplaints = () => {
 
     return ( 
         <>
-		{!complaints!= "" ?(
+		{complaints!= "" ?(
         <div>
         <div className="flex gap-2 ml-[400px]">
 				<input
