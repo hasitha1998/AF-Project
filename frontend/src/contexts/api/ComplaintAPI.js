@@ -39,6 +39,12 @@ class ComplaintAPI {
 		const response = await axios.patch(`${BASE_URL}/api/complaint/status/${id}`, { status }, requestConfigJson);
 		return response.data;
 	}
+
+	// getAllComplaintsByAuthority
+	static async getAllComplaintsByAuthority(id) {
+		const response = await axios.get(`${BASE_URL}/api/complaint/authority/${id}`, requestConfig);
+		return response.data;
+	}
 }
 
 export default ComplaintAPI;

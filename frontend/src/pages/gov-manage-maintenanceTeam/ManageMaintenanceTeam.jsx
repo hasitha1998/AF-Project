@@ -52,16 +52,16 @@ const ManageMaintenanceTeam = () => {
   };
 
   // Change maintenance team status
-  const changeMaintenanceTeamStatus = (id, status) => {
-    MaintenanceTeamAPI.updateMaintenanceTeamStatus(id, status)
-      .then((res) => {
-        makeToast({ type: "success", message: "Status changed successfully" });
-        refetchTeams();
-      })
-      .catch((err) => {
-        makeToast({ type: "error", message: err.response.data.message });
-      });
-  };
+  // const changeMaintenanceTeamStatus = (id, status) => {
+  //   MaintenanceTeamAPI.updateMaintenanceTeamStatus(id, status)
+  //     .then((res) => {
+  //       makeToast({ type: "success", message: "Status changed successfully" });
+  //       refetchTeams();
+  //     })
+  //     .catch((err) => {
+  //       makeToast({ type: "error", message: err.response.data.message });
+  //     });
+  // };
 
   // Handle view team
   const handleViewTeam = (team) => {
@@ -156,26 +156,25 @@ const ManageMaintenanceTeam = () => {
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                               {team.teamStatus === "ASSIGNED" ? (
                                 <button
-                                  // dotted border
                                   className="text-green-500 font-bold hover:text-green-700 border-2 border-green-500 rounded-full px-3 py-1"
-                                  onClick={() =>
-                                    changeMaintenanceTeamStatus(
-                                      team._id,
-                                      "NOT_ASSIGNED"
-                                    )
-                                  }
+                                  // onClick={() =>
+                                  //   changeMaintenanceTeamStatus(
+                                  //     team._id,
+                                  //     "NOT_ASSIGNED"
+                                  //   )
+                                  // }
                                 >
                                   ASSIGNED
                                 </button>
                               ) : (
                                 <button
                                   className="text-red-500 font-bold hover:text-red-700 border-2 border-red-500 rounded-full px-3 py-1"
-                                  onClick={() =>
-                                    changeMaintenanceTeamStatus(
-                                      team._id,
-                                      "ASSIGNED"
-                                    )
-                                  }
+                                  // onClick={() =>
+                                  //   changeMaintenanceTeamStatus(
+                                  //     team._id,
+                                  //     "ASSIGNED"
+                                  //   )
+                                  // }
                                 >
                                   NOT ASSIGNED
                                 </button>
