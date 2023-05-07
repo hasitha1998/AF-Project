@@ -1,12 +1,19 @@
 import { useState } from "react";
 import ComplaintAPI from "../../contexts/api/ComplaintAPI";
 import { useQuery } from "@tanstack/react-query";
+import MaintenanceTeamAPI from "../../contexts/api/MaintenanceTeamAPI";
 
-const ManageComplaints = () => {
+const AssignComplaints = () => {
   const authorityId = localStorage.getItem("uId");
   const [complaints, setComplaints] = useState([]);
+  const [maintenanceTeams, setMaintenanceTeams] = useState([]);
 
-  const { isLoading, refetch, error } = useQuery(
+  // Get all complaints by authority
+  const {
+    isLoading: isLoadingComplaints,
+    refetch: refetchComplaints,
+    error: errorComplaints,
+  } = useQuery(
     ["complaints", authorityId],
     () => ComplaintAPI.getAllComplaintsByAuthority(authorityId),
     {
@@ -16,10 +23,39 @@ const ManageComplaints = () => {
     }
   );
 
+  // Get all maintenance teams
+  const {
+    isLoading: isLoadingMaintenanceTeams,
+    refetch: refetchMaintenanceTeams,
+    error: errorMaintenanceTeams,
+  } = useQuery(
+    ["maintenanceTeams"],
+    () => MaintenanceTeamAPI.getAllMaintenanceTeams(),
+    {
+      onSuccess: (res) => {
+        setMaintenanceTeams(res.data);
+      },
+    }
+  );
+
+  // Assign complaint to maintenance team
+  const handleAssignComplaint = async (complaintId, maintenanceTeamId) => {
+    await ComplaintAPI.assignComplaintToMaintenanceTeam(
+      complaintId,
+      maintenanceTeamId
+    );
+    await MaintenanceTeamAPI.updateMaintenanceTeamStatus(
+      maintenanceTeamId,
+      "ASSIGNED"
+    );
+    await ComplaintAPI.changeComplaintStatus(complaintId, "assigned");
+    refetchComplaints();
+  };
+
   return (
     <div className="flex flex-col mx-10 my-10">
       <div className="flex flex-row justify-between">
-        <h1 className="text-3xl text-black">Manage Complaints</h1>
+        <h1 className="text-3xl text-black">Assign Complaints</h1>
       </div>
 
       <div className="flex flex-col mt-10">
@@ -47,16 +83,24 @@ const ManageComplaints = () => {
                     >
                       Status
                     </th>
-                    {/* <th
+                    {/* Assigned Maintenance Team */}
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                    >
+                      Assigned Team
+                    </th>
+
+                    <th
                       scope="col"
                       className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase"
                     >
                       Action
-                    </th> */}
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                  {error && (
+                  {errorComplaints && (
                     <tr>
                       <td colSpan="4" className="text-center py-4">
                         Something went wrong!
@@ -64,7 +108,7 @@ const ManageComplaints = () => {
                     </tr>
                   )}
 
-                  {isLoading && (
+                  {isLoadingComplaints && (
                     <tr>
                       <td colSpan="4" className="text-center py-4">
                         Loading...
@@ -85,9 +129,36 @@ const ManageComplaints = () => {
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
                             {complain.description}
                           </td>
-                          {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
                             {complain.complaintStatus}
-                          </td> */}
+                          </td>
+
+                          {/* Assigned Maintenance Team */}
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                            {complain.assignedTeam?.teamName}
+                          </td>
+
+                          {/* Assign complaint to maintenance team */}
+                          <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <select
+                              className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"
+                              onChange={(e) =>
+                                handleAssignComplaint(
+                                  complain._id,
+                                  e.target.value
+                                )
+                              }
+                              value={complain.assignedTeam?.teamName}
+                            >
+                              <option value="">Assign Team</option>
+                              {maintenanceTeams &&
+                                maintenanceTeams.map((team) => (
+                                  <option value={team._id} key={team._id}>
+                                    {team.teamName}
+                                  </option>
+                                ))}
+                            </select>
+                          </td>
                         </tr>
                       ))}
                 </tbody>
@@ -100,4 +171,4 @@ const ManageComplaints = () => {
   );
 };
 
-export default ManageComplaints;
+export default AssignComplaints;

@@ -6,45 +6,70 @@ import requestConfigJson from "./requestConfigJson";
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 class ComplaintAPI {
-	// Get all Complaints
-	static getComplaints() {
-		return axios.get(`${BASE_URL}/api/complaint/`, requestConfig);
-	}
+  // Get all Complaints
+  static getComplaints() {
+    return axios.get(`${BASE_URL}/api/complaint/`, requestConfig);
+  }
 
-	// Add a Complaint
-	static createComplaint(newComplaint) {
-		return axios.post(`${BASE_URL}/api/complaint/`, newComplaint, requestConfigJson);
-	}
+  // Add a Complaint
+  static createComplaint(newComplaint) {
+    return axios.post(
+      `${BASE_URL}/api/complaint/`,
+      newComplaint,
+      requestConfigJson
+    );
+  }
 
-	//Get one Complaint
+  //Get one Complaint
 
-	static getOneComplaint(id) {
-		return axios.get(`${BASE_URL}/api/complaint/${id}`, requestConfigJson);
-	}
+  static getOneComplaint(id) {
+    return axios.get(`${BASE_URL}/api/complaint/${id}`, requestConfigJson);
+  }
 
-	//Edit Complaint
+  //Edit Complaint
 
-	static editComplaint(id, newComplaint) {
-		return axios.put(`${BASE_URL}/api/complaint/${id}`, newComplaint, requestConfigJson);
-	}
+  static editComplaint(id, newComplaint) {
+    return axios.put(
+      `${BASE_URL}/api/complaint/${id}`,
+      newComplaint,
+      requestConfigJson
+    );
+  }
 
-	//Delete Complaint
+  //Delete Complaint
 
-	static deleteComplaint(id) {
-		return axios.delete(`${BASE_URL}/api/complaint/${id}`, requestConfig);
-	}
+  static deleteComplaint(id) {
+    return axios.delete(`${BASE_URL}/api/complaint/${id}`, requestConfig);
+  }
 
-    // changeComplaintStatus
-	static async changeComplaintStatus(id, status) {
-		const response = await axios.patch(`${BASE_URL}/api/complaint/status/${id}`, { status }, requestConfigJson);
-		return response.data;
-	}
+  // changeComplaintStatus
+  static async changeComplaintStatus(id, status) {
+    const response = await axios.patch(
+      `${BASE_URL}/api/complaint/status/${id}`,
+      { complaintStatus: status },
+      requestConfigJson
+    );
+    return response.data;
+  }
 
-	// getAllComplaintsByAuthority
-	static async getAllComplaintsByAuthority(id) {
-		const response = await axios.get(`${BASE_URL}/api/complaint/authority/${id}`, requestConfig);
-		return response.data;
-	}
+  // getAllComplaintsByAuthority
+  static async getAllComplaintsByAuthority(id) {
+    const response = await axios.get(
+      `${BASE_URL}/api/complaint/authority/${id}`,
+      requestConfig
+    );
+    return response.data;
+  }
+
+  // assignComplaintToMaintenanceTeam
+  static async assignComplaintToMaintenanceTeam(id, maintenanceTeam) {
+    const response = await axios.patch(
+      `${BASE_URL}/api/complaint/assign/${id}`,
+      { maintenanceTeam },
+      requestConfigJson
+    );
+    return response.data;
+  }
 }
 
 export default ComplaintAPI;

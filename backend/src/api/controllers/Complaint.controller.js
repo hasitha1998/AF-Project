@@ -120,3 +120,16 @@ export const getAllComplaintsByAuthority = async (request, response, next) => {
             next();
         });
 };
+
+// assignComplaintToMaintenanceTeam
+export const assignComplaintToMaintenanceTeam = async (request, response, next) => {
+    await ComplaintService.assignComplaintToMaintenanceTeam(request.params.id, request.body.maintenanceTeam)
+        .then(async () => {
+            request.handleResponse.successRespond(response)({ message: "Complaint assigned to maintenance team successfully" });
+            next();
+        })
+        .catch((error) => {
+            request.handleResponse.errorRespond(response)(error.message);
+            next();
+        });
+};

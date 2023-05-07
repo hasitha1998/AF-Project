@@ -51,7 +51,8 @@ const ComplaintSchema = new mongoose.Schema({
 		default: false,
 	},
 	assignedTeam: {
-		type: String,
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "maintenanceTeam",
 		default: null
 	},
 });
