@@ -36,23 +36,15 @@ const ComplaintSchema = new mongoose.Schema({
 		    required:false
 	},
     citizenId: {
-		type: String,
-		required: true,
+		type:mongoose.Schema.Types.ObjectId,
+		ref:"Customer",
 	},
 	
-    citizenName: {
-		type: String,
-		required: true,
-	},
-    citizenNIC: {
-		type: String,
-		required: true,
-	},
     complaintStatus: {
 		type: String,
 		required: true,
 		default: "pending",
-		enum: ["pending", "assigned", "inProgress", "resolved", "invalid"],
+		enum: ["pending","approved", "assigned", "inProgress", "resolved", "invalid"],
 	},
 	isPublish: {
 		type: Boolean,

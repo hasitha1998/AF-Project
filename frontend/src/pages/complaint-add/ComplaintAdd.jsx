@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
-import React, { useContext, useState } from "react";
+import React, { useContext, useState , useEffect } from "react";
 import axios from "axios";
 import ComplaintContext from "../../contexts/ComplaintContext";
+import GovAuthAPI from "../../contexts/api/GovAuthAPI";
 import { useNavigate } from "react-router-dom";
 
 const ComplaintAdd = () => {
@@ -13,10 +14,21 @@ const ComplaintAdd = () => {
 	const[authority,setAuthority]=useState();
 	const [image, setImage] = useState("");
 	const [url, setUrl] = useState("");
+	const [auths, setAuths] = useState([]);
+
 
 	const name=localStorage.getItem("name");
 	const id=localStorage.getItem("uId")
 	const nic=localStorage.getItem("nic")
+
+	useEffect(() => {
+		//setIsLoading(true);
+		GovAuthAPI.getGovAuths().then((response) => {
+			setAuths(response.data);
+		//console.log(products.values("productName"));
+			//setIsLoading(false);
+		});
+	}, []);
 
 
 	const onChangeAuthority = (event) => {
@@ -74,8 +86,6 @@ const ComplaintAdd = () => {
             emergencyNo:e.target.emergencyNo.value,
             image:url,
             citizenId:id,
-            citizenName:name,
-            citizenNIC:nic,
             complaintStatus:"pending",
 		};
 		addComplaint(newComplaint);
@@ -156,8 +166,8 @@ const ComplaintAdd = () => {
 		<div className="mb-6">
       <select className="border w-80 border-solid py-1.5 rounded border-red-800 text-center" onChange={onChangeAuthority}>
 	    <option slected>select the relevant Authority</option>
-		{Authority.map((authority,key)=>(		
-		<option value={authority}>{authority}</option>
+		{auths.map((authority,key)=>(		
+		<option value={authority._id}>{authority.name}</option>
 		))}
 	  </select>
 	  </div>
