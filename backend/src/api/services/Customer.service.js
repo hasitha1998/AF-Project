@@ -84,3 +84,19 @@ export const deleteCustomer = async (customerId) => {
 			throw new Error(error.message);
 		});
 };
+
+//change Account Status
+
+export const changeAccountStatus = async (customerId, status) => {
+	return await CustomerModel.findByIdAndUpdate(customerId, { accountStatus: status })
+		.then((account) => {
+			if (account) {
+				return account;
+			} else {
+				throw new Error("Account not found");
+			}
+		})
+		.catch((error) => {
+			throw new Error(error.message);
+		});
+};

@@ -125,3 +125,15 @@ export const deleteCustomer = async (request, response, next) => {
 			next();
 		});
 };
+
+export const changeAccountStatus = async (request, response, next) => {
+	await CustomerService.changeAccountStatus(request.params.id, request.body.status)
+		.then(async()=>{
+            request.handleResponse.successRespond(response)({ message: "Account status changed successfully" });
+			next();
+        })
+        .catch((error) => {
+			request.handleResponse.errorRespond(response)(error.message);
+			next();
+		});
+};

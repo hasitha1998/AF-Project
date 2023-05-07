@@ -102,14 +102,13 @@ const AdminDashboard = () => {
                     </svg>
                   </div>
                   <div>
-                    <Link to = {`/admin/${id}`}>
-                    <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
-                      Admin Profile
-                    </p>
-                    <p className="text-slate-400 text-sm hidden md:block">
-               
-                      View Admin Profile
-                    </p>
+                    <Link to= "/admin/viewAllComplaints">
+                      <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
+                        Complaints
+                      </p>
+                      <p className="text-slate-400 text-sm hidden md:block">
+                        View all complaints
+                      </p>
                     </Link>
                   </div>
                 </div>
@@ -141,12 +140,14 @@ const AdminDashboard = () => {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
-                      Settings
-                    </p>
-                    <p className="text-slate-400 text-sm hidden md:block">
-                      Edit settings
-                    </p>
+                    <Link to={`/admin/${id}`}>
+                      <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
+                        Settings
+                      </p>
+                      <p className="text-slate-400 text-sm hidden md:block">
+                        Edit settings
+                      </p>
+                    </Link>
                   </div>
                 </div>
               </a>
@@ -271,9 +272,7 @@ const AdminDashboard = () => {
               </div>
             </div>
             <div id="last-incomes">
-              <h1 className="font-bold py-4 uppercase">
-                Manage Authority & Complains
-              </h1>
+              <h1 className="font-bold py-4 uppercase">Complaints</h1>
               <div
                 id="stats"
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
@@ -281,9 +280,7 @@ const AdminDashboard = () => {
                 <div className="bg-white to-white/5 rounded-lg">
                   <div className="flex flex-row items-center">
                     <div className="p-2">
-                      <p className="text-xl font-bold text-black">
-                        Gov. Authority
-                      </p>
+                      <p className="text-xl font-bold text-black">Pending</p>
                     </div>
                   </div>
                   <div>
@@ -295,7 +292,31 @@ const AdminDashboard = () => {
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
-                      <Link to="/user/pending">
+                      <Link to="/admin/pendingComplaints">
+                        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
+                          Click Here
+                        </button>
+                      </Link>
+                    </div>
+                  </center>
+                </div>
+
+                <div className="bg-white to-white/5 rounded-lg">
+                  <div className="flex flex-row items-center">
+                    <div className="p-2">
+                      <p className="text-xl font-bold text-black">Assigned</p>
+                    </div>
+                  </div>
+                  <div>
+                    <img
+                      className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover"
+                      src="../pending.png"
+                      alt=""
+                    />
+                  </div>
+                  <center>
+                    <div className="border-t border-white/5 p-4">
+                      <Link to="/admin/assignComplaints">
                         <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
@@ -308,7 +329,7 @@ const AdminDashboard = () => {
                   <div className="flex flex-row items-center">
                     <div className="p-2">
                       <p className="text-xl font-bold text-black">
-                        Compalints
+                        In-Progress
                       </p>
                     </div>
                   </div>
@@ -321,33 +342,7 @@ const AdminDashboard = () => {
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
-                      <Link to="/admin/complaint">
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
-                          Click Here
-                        </button>
-                      </Link>
-                    </div>
-                  </center>
-                </div>
-
-                <div className="bg-white to-white/5 rounded-lg">
-                  <div className="flex flex-row items-center">
-                    <div className="p-2">
-                      <p className="text-xl font-bold text-black">
-                        Feedbacks
-                      </p>
-                    </div>
-                  </div>
-                  <div>
-                    <img
-                      className="rounded-full ml-2 w-[12rem] h-[12rem] relative object-cover"
-                      src="../pending.png"
-                      alt=""
-                    />
-                  </div>
-                  <center>
-                    <div className="border-t border-white/5 p-4">
-                      <Link to="/user/pending">
+                      <Link to="/admin/inprogressComplaints">
                         <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
@@ -358,9 +353,7 @@ const AdminDashboard = () => {
                 <div className="bg-white to-white/5 rounded-lg">
                   <div className="flex flex-row items-center">
                     <div className="p-2">
-                      <p className="text-xl font-bold text-black">
-                        Pending Accounts
-                      </p>
+                      <p className="text-xl font-bold text-black">Resolved</p>
                     </div>
                   </div>
                   <div>
@@ -372,7 +365,7 @@ const AdminDashboard = () => {
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
-                      <Link to="/user/pending">
+                      <Link to="/admin/resolvedComplaints">
                         <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
