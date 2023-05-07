@@ -12,6 +12,11 @@ import ManageMaintenanceTeam from "./gov-manage-maintenanceTeam";
 import ManageComplaints from "./gov-manage-complaints";
 import CustomerLogin from "./customer-login";
 import CustomerDashboard from "./customer-dashboard";
+import PendingComplaints from "./customer-complaint-types";
+import AssignedComplaints from "./customer-complaint-types";
+import InProgressComplaints from "./customer-complaint-types";
+import ResolvedComplaints from "./customer-complaint-types";
+import InvalidComplaints from "./customer-complaint-types";
 
 export {
   Home,
@@ -27,5 +32,10 @@ export {
   ManageMaintenanceTeam,
   ManageComplaints,
   CustomerLogin,
-  CustomerDashboard
+  CustomerDashboard,
+  PendingComplaints,
+  AssignedComplaints,
+  InProgressComplaints,
+  ResolvedComplaints,
+  InvalidComplaints
 };
