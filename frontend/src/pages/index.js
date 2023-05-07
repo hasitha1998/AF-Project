@@ -20,7 +20,7 @@ import AssignedComplaints from "./customer-complaint-types";
 import InProgressComplaints from "./customer-complaint-types";
 import ResolvedComplaints from "./customer-complaint-types";
 import InvalidComplaints from "./customer-complaint-types";
-import AdminComplaintView from "./admin-complaint-view";
+
 
 import AdminViewAllComplaints from "./admin-view-all-complaints";
 import AdminComplaintPending from "./admin-complaint-pending";
@@ -47,9 +47,8 @@ export {
   AssignedComplaints,
   InProgressComplaints,
   ResolvedComplaints,
-  InvalidComplaints
+  InvalidComplaints,
   AdminProfile,
-  CustomerDashboard,
   AdminViewAllComplaints,
   AdminComplaintPending,
   AdminComplaintAssign,
