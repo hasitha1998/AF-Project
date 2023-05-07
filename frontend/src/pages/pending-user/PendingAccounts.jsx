@@ -76,7 +76,8 @@ const PendingAccount = () => {
 
                   </td>
                   <td className="py-3 px-6 text-center">{customer.accountStatus}</td>
-                <td><button
+                <td>
+                  <button
                     className=" bg-green-500 text-white py-2 px-2 ml-[5rem] rounded-md hover:bg-green-600 transition-colors"
                     onClick={() => changeAccountStatus(customer._id,status)}
                   >

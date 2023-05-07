@@ -75,17 +75,9 @@ const AdminComplaintPending = () => {
 
                           <td className="px-6 py-4">
                             <div className="inline-flex items-center rounded-full px- py-1 text-xl ">
-                              {elem.authority == "LECO" ? (
-                                <>
-                                  <span class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-md font-semibold text-violet-600">
-                                    {elem.authority}
-                                  </span>
-                                </>
-                              ) : (
-                                <span class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-md font-semibold text-red-600">
-                                  {elem.authority}
-                                </span>
-                              )}
+                              <span class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-md font-semibold text-red-600">
+                                {elem.authority.name}
+                              </span>
                             </div>
                           </td>
                           <td className="px-6 py-4">

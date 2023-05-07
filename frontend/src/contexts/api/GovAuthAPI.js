@@ -32,7 +32,7 @@ class GovAuthAPI {
   // Edit GovAuth
   static editGovAuth(id, newGovAuth) {
     return axios.put(
-      `${BASE_URL}/api/gov/update/${id}`,
+      `${BASE_URL}/api/gov/${id}`,
       newGovAuth,
       requestConfigJson
     );
@@ -40,7 +40,7 @@ class GovAuthAPI {
 
   // Delete GovAuth
   static deleteGovAuth(id) {
-    return axios.delete(`${BASE_URL}/api/gov/delete/${id}`, requestConfig);
+    return axios.delete(`${BASE_URL}/api/gov/${id}`, requestConfig);
   }
 }
 
