@@ -67,6 +67,23 @@ export function AdminProvider({ children }) {
     });
   }, []);
 
+  //Edit Admin
+  const editAdmin = (values) => {
+    const newAdmin = {
+      name: values.name,
+      email: values.email,
+    };
+    AdminAPI.editAdmin(values.id, newAdmin)
+      .then((response) => {
+        makeToast({ type: "success", message: "Profile Updated Successful" });
+        window.location.href = "/admin";
+      })
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.log(err);
+      });
+  };
+
   return (
     <AdminContext.Provider
       value={{
@@ -77,6 +94,7 @@ export function AdminProvider({ children }) {
         AdminLogin,
         AdminRegister,
         getOneAdmin,
+        editAdmin,
       }}
     >
       {children}

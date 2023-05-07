@@ -3,13 +3,29 @@ import { Link } from "react-router-dom";
 import AdminContext from "../../contexts/AdminContext";
 
 const AdminProfile = () => {
-  const { admin, getOneAdmin } = useContext(AdminContext);
+  const { admin, getOneAdmin, editAdmin, setAdmin } = useContext(AdminContext);
 
   const id = localStorage.getItem("uId");
   getOneAdmin(id);
+
+  const handleChange = (e) => {
+    setAdmin(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newAdmin = {
+      id: id,
+      name: e.target.name.value,
+      email: e.target.email.value,
+    };
+    editAdmin(newAdmin);
+  };
+
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="flex justify-center h-full max-w-4xl mx-auto mt-28 bg-white rounded-lg shadow-xl ">
           <div className=" left  rounded-lg">
             <div className="mt-32 ml-16 ">
@@ -33,8 +49,8 @@ const AdminProfile = () => {
                   type="text"
                   className="w-80 px-4 py-2 text-sm border rounded-md bg bg-slate-100 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
                   placeholder="Please Enter Your Name"
-                  readOnly
                   value={admin.name}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -49,11 +65,12 @@ const AdminProfile = () => {
                   className="w-80 px-4 py-2 text-sm border rounded-md bg bg-slate-100 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
                   placeholder="Please Enter Your Email"
                   value={admin.email}
+                  onChange={handleChange}
                   readOnly
                 />
               </div>
               <br></br>
-              <div >
+              <div>
                 <label className="block mb-2 text-sm font-bold text-black">
                   Permission Level
                 </label>
@@ -66,16 +83,12 @@ const AdminProfile = () => {
                   readOnly
                 />
               </div>
-              <label className="block mt-8 text-sm font-bold text-black">
-                  Account Status
-                </label>
 
-              <div className="flex items-center justify-center gap-4 mb-10">
-             
-								<button className="bg-green-500 hover:bg-green-500 text-white font-bold mt-4  w-60 py-1.5  rounded-xl">
-									ACTIVE
-								</button>
-							</div>
+              <div className="flex items-center justify-center gap-4 mb-10 mt-2">
+                <button className="bg-green-500 hover:bg-green-500 text-white font-bold mt-4  w-60 py-1.5  rounded-xl">
+                  Save
+                </button>
+              </div>
             </div>
           </div>
         </div>
