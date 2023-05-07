@@ -65,6 +65,7 @@ const AdminProfile = () => {
                   className="w-80 px-4 py-2 text-sm border rounded-md bg bg-slate-100 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
                   placeholder="Please Enter Your Email"
                   value={admin.email}
+                  onChange={handleChange}
                   readOnly
                 />
               </div>
