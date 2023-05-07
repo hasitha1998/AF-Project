@@ -109,3 +109,16 @@ export const searchComplaints = async (request, response, next) => {
             next();
         });
 };
+
+// getAllComplaintsByAuthority
+export const getAllComplaintsByAuthority = async (request, response, next) => {
+    await ComplaintService.getAllComplaintsByAuthority(request.params.authorityId)
+        .then(async (data) => {
+            request.handleResponse.successRespond(response)(data);
+            next();
+        })
+        .catch((error) => {
+            request.handleResponse.errorRespond(response)(error.message);
+            next();
+        });
+};

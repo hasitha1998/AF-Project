@@ -10,6 +10,7 @@ import {
 	deleteComplaint,
 	changeComplaintStatus,
 	searchComplaints,
+	getAllComplaintsByAuthority,
 } from "./Complaint.controller";
 
 import {
@@ -50,6 +51,7 @@ export default {
 	deleteComplaint,
 	changeComplaintStatus,
 	searchComplaints,
+	getAllComplaintsByAuthority,
 
 	// Admin Controllers
 	registerAdmin,

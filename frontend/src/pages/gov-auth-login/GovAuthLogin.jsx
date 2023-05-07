@@ -2,14 +2,24 @@ import { useState } from "react";
 import GovAuthAPI from "../../contexts/api/GovAuthAPI";
 import makeToast from "../../components/toast";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const GovAuthLogin = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { mutate, isLoading } = useMutation(GovAuthAPI.login, {
-    onSuccess: (data) => {
+    onSuccess: (res) => {
+      // Save data to local storage
+      localStorage.setItem("authToken", res.data.token);
+      localStorage.setItem("permissionLevel", res.data.permissionLevel);
+      localStorage.setItem("uId", res.data._id);
+      localStorage.setItem("email", res.data.email);
+      localStorage.setItem("name", res.data.name);
       makeToast({ type: "success", message: "Login Successful" });
+      navigate("/gov");
     },
     onError: (error) => {
       makeToast({
