@@ -103,6 +103,7 @@ const Header = () => {
             >
               Blog
             </Link>
+
             <div className="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none]">
               <button
                 id="hs-mega-menu-basic-dr"
@@ -193,6 +194,34 @@ const Header = () => {
                 </Link>
               </div>
             </div>
+
+            {permissionLevel === "ADMIN" && (
+              <Link
+                className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+                to="/admin"
+              >
+                Dashboard
+              </Link>
+            )}
+
+            {permissionLevel === "CUSTOMER" && (
+              <Link
+                className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+                to="/customer/dashboard"
+              >
+                Dashboard
+              </Link>
+            )}
+
+            {permissionLevel === "GOV_AUTHORITY" && (
+              <Link
+                className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+                to="/gov/dashboard"
+              >
+                Dashboard
+              </Link>
+            )}
+
             {permissionLevel && (
               <button
                 className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"

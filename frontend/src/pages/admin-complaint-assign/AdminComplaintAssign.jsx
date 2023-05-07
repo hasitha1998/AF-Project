@@ -1,15 +1,12 @@
 import React, { useContext } from "react";
 import ComplaintContext from "../../contexts/ComplaintContext";
 
-const AdminComplaintAssign = ()=> {
-    const { complaints, deleteComplaint } = useContext(ComplaintContext);
+const AdminComplaintAssign = () => {
+  const { complaints, deleteComplaint } = useContext(ComplaintContext);
 
-    return(
-
-        <>
-        
-        
-        <section class="text-gray-600 body-font">
+  return (
+    <>
+      <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-col">
             <div class="h-1 bg-gray-200 rounded overflow-hidden">
@@ -78,17 +75,9 @@ const AdminComplaintAssign = ()=> {
 
                           <td className="px-6 py-4">
                             <div className="inline-flex items-center rounded-full px- py-1 text-xl ">
-                              {elem.authority == "LECO" ? (
-                                <>
-                                  <span class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-md font-semibold text-violet-600">
-                                    {elem.authority}
-                                  </span>
-                                </>
-                              ) : (
-                                <span class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-md font-semibold text-red-600">
-                                  {elem.authority}
-                                </span>
-                              )}
+                              <span class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-md font-semibold text-red-600">
+                                {elem.authority.name}
+                              </span>
                             </div>
                           </td>
                           <td className="px-6 py-4">
@@ -147,13 +136,8 @@ const AdminComplaintAssign = ()=> {
           </div>
         </div>
       </section>
-        </>
-
-
-
-    );
-
-
+    </>
+  );
 };
 
 export default AdminComplaintAssign;
