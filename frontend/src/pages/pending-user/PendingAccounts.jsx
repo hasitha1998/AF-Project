@@ -93,6 +93,7 @@ const PendingAccount = () => {
 										</div>
 
                   </td>
+
                   <td>
                   <span class="ml-[5rem] inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-lg font-bold text-green-600">
                         <span class="h-1.5 w-1.5 rounded-full bg-green-600"></span>
@@ -101,6 +102,7 @@ const PendingAccount = () => {
                       </td>
                 <td><button
                     className=" bg-green-500 text-white py-2 px-2 ml-[5rem] rounded-md text-lg font-bold hover:bg-green-600 transition-colors"
+
                     onClick={() => changeAccountStatus(customer._id,status)}
                   >
                     Active Account

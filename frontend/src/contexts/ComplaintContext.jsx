@@ -25,8 +25,6 @@ export function ComplaintProvider({ children }) {
        emergencyNo:"",
        image:"",
        citizenId:"",
-       citizenName:"",
-       citizenNIC:"",
        complaintStatus:"",
 	});
 
@@ -81,8 +79,6 @@ export function ComplaintProvider({ children }) {
             emergencyNo:values.emergencyNo,
             image:values.image,
             citizenId:values.citizenId,
-            citizenName:values.citizenName,
-            citizenNIC:values.citizenNIC,
             complaintStatus:values.complaintStatus,
 			isPublished:values.isPublished,
 			assignedTeam:values.assignedTeam

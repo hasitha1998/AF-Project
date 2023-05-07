@@ -15,6 +15,9 @@ export const insertComplaint = async (ComplaintData) => {
 // Get all Complaint
 export const getAllComplaints = async () => {
 	return await ComplaintModel.find({})
+		// name and description of the authority
+		.populate("authority", "name description")
+		.populate("citizenId", "name nic")
 		.then((complaints) => {
 			return complaints;
 		})
@@ -28,7 +31,7 @@ export const getOneComplaint = async (complaintId) => {
 	return await ComplaintModel.findById(complaintId)
 		.then((complaint) => {
 			if (complaint) {
- 				return complaint;
+				return complaint;
 			} else {
 				throw new Error("complaint not found");
 			}
@@ -86,12 +89,22 @@ export const changeComplaintStatus = async (complaintId, status) => {
 		});
 };
 
-
 // Search Complaint titles or content
 export const searchComplaints = async (searchTerm) => {
 	return await ComplaintModel.find({
 		$or: [{ title: { $regex: searchTerm, $options: "i" } }, { content: { $regex: searchTerm, $options: "i" } }],
 	})
+		.then((complaints) => {
+			return complaints;
+		})
+		.catch((error) => {
+			throw new Error(error.message);
+		});
+};
+
+// Get all Complaints by a specific user
+export const getAllComplaintsByAuthority = async (authority) => {
+	return await ComplaintModel.find({ authority: authority })
 		.then((complaints) => {
 			return complaints;
 		})

@@ -1,15 +1,13 @@
 import React from "react";
-import AdminViewAllComplaints from "./AdminViewAllComplaints";
+import AdminComplaintAssign from "./AdminComplaintAssign";
 
 import { ComplaintProvider } from "../../contexts/ComplaintContext";
 
 const index = () => {
   return (
-   
-      <ComplaintProvider>
-      <AdminViewAllComplaints />
-      </ComplaintProvider> 
-
+    <ComplaintProvider>
+      <AdminComplaintAssign />
+    </ComplaintProvider>
   );
 };
 

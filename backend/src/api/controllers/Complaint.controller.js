@@ -3,7 +3,7 @@ import ComplaintService from "../services";
 // Insert one Complaint
 export const insertComplaint = async (request, response, next) => {
 
-   const{complaintTitle,description,authority,province,district,location,emergencyNo,image,citizenId,citizenName,citizenNIC,complaintStatus,isPublish,assignedTeam}=request.body;
+   const{complaintTitle,description,authority,province,district,location,emergencyNo,image,citizenId,complaintStatus,isPublish,assignedTeam}=request.body;
     await ComplaintService.insertComplaint(
        {
        complaintTitle,
@@ -15,8 +15,6 @@ export const insertComplaint = async (request, response, next) => {
        emergencyNo,
        image,
        citizenId,
-       citizenName,
-       citizenNIC,
        complaintStatus,
        isPublish,
        assignedTeam
@@ -101,6 +99,19 @@ export const changeComplaintStatus = async (request, response, next) => {
 export const searchComplaints = async (request, response, next) => {
     await ComplaintService.searchComplaints(request.params.search)
         .then((data) => {
+            request.handleResponse.successRespond(response)(data);
+            next();
+        })
+        .catch((error) => {
+            request.handleResponse.errorRespond(response)(error.message);
+            next();
+        });
+};
+
+// getAllComplaintsByAuthority
+export const getAllComplaintsByAuthority = async (request, response, next) => {
+    await ComplaintService.getAllComplaintsByAuthority(request.params.authorityId)
+        .then(async (data) => {
             request.handleResponse.successRespond(response)(data);
             next();
         })
