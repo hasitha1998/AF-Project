@@ -66,27 +66,33 @@ export function CustomerProvider({ children }) {
   };
 
 
-  /*/ Get all customers
+  // Get all customers
   const getAllCustomers = async () => {
     try {
       const response = await CustomerAPI.getCustomers();
-      setCustomers(response.data);
-      makeToast({ type: "success", message: "Customers fetched successfully" });
-    } catch (err) {
-      makeToast({ type: "error", message: "Failed to fetch customers" });
-      console.log(err);
-    }
-  };*/
-  
-  useEffect(() => {
-    try {
-      const response = CustomerAPI.getCustomers();
       setCustomers(response.data);
       //makeToast({ type: "success", message: "Customers fetched successfully" });
     } catch (err) {
       //makeToast({ type: "error", message: "Failed to fetch customers" });
       console.log(err);
-    }  }, []);
+    }
+  };
+  
+  useEffect(() => {
+    const fetchCustomers = async () => {
+      try {
+        const response = await CustomerAPI.getCustomers();
+        setCustomers(response.data);
+        
+      } catch (err) {
+        
+        console.log(err);
+      }
+    };
+    
+    fetchCustomers();
+  }, []);
+  
   
 
    // Update customer
@@ -111,6 +117,17 @@ export function CustomerProvider({ children }) {
     }
   };
 
+  const changeAccountStatus = async (customerId , status) => {
+		try {
+		  const { data } = await CustomerAPI.changeAccountStatus(customerId, status);
+		  makeToast({ type: "success", message: "Account status updated successfully" });
+		} catch (error) {
+		  console.log(error);
+		  makeToast({ type: "error", message: "Something went wrong" });
+		}
+	  };
+
+
   return (
     <CustomerContext.Provider
       value={{
@@ -125,7 +142,9 @@ export function CustomerProvider({ children }) {
         setNicError,
         CustomerLogin,
         updateCustomer,
-        deleteCustomer,        
+        deleteCustomer, 
+        getAllCustomers,
+        changeAccountStatus      
       }}
     >
       {children}
