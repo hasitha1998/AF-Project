@@ -15,10 +15,8 @@ export const insertComplaint = async (ComplaintData) => {
 // Get all Complaint
 export const getAllComplaints = async () => {
 	return await ComplaintModel.find({})
-		.populate("authority", {
-			name: "name",
-			description: "description",
-		})
+		// name and description of the authority
+		.populate("authority", "name description")
 		.then((complaints) => {
 			return complaints;
 		})
