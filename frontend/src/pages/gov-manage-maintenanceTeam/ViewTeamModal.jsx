@@ -1,7 +1,12 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 
-export default function ViewTeamModal({ isViewTeamModalOpen, closeViewTeamModal }) {
+export default function ViewTeamModal({
+  isViewTeamModalOpen,
+  closeViewTeamModal,
+  selectedTeam,
+}) {
+
   return (
     <>
       <Transition appear show={isViewTeamModalOpen} as={Fragment}>
@@ -32,15 +37,25 @@ export default function ViewTeamModal({ isViewTeamModalOpen, closeViewTeamModal 
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-3xl font-medium leading-6 text-gray-900"
                   >
-                    View Team
+                    {selectedTeam.teamName}
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Your payment has been successfully submitted. We’ve sent
-                      you an email with all of the details of your order.
+
+                  <hr className="my-4" />
+                  <div className="text-gray-900">
+                    <p className="text-lg">
+                      Team Leader: {selectedTeam.teamLeader}
                     </p>
+                  </div>
+
+                  <div className="mt-2">
+                    <p className="text-lg">Team Members:</p>
+                    <ul className="list-disc list-inside">
+                      {selectedTeam.teamMembers.map((member) => (
+                        <li key={member}>{member}</li>
+                      ))}
+                    </ul>
                   </div>
 
                   <div className="mt-4">

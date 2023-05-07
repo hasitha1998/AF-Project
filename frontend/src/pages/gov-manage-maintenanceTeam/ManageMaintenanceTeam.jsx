@@ -9,6 +9,7 @@ import ViewTeamModal from "./ViewTeamModal";
 
 const ManageMaintenanceTeam = () => {
   const [teams, setTeams] = useState([]);
+  const [selectedTeam, setSelectedTeam] = useState("");
 
   // Get all maintenance teams
   const { isLoading: teamsLoading, refetch: refetchTeams } = useQuery({
@@ -62,6 +63,12 @@ const ManageMaintenanceTeam = () => {
       });
   };
 
+  // Handle view team
+  const handleViewTeam = (team) => {
+    setSelectedTeam(team);
+    openViewTeamModal();
+  };
+
   return (
     <>
       <AddTeamModal
@@ -71,6 +78,7 @@ const ManageMaintenanceTeam = () => {
       <ViewTeamModal
         isViewTeamModalOpen={isViewTeamModalOpen}
         closeViewTeamModal={closeViewTeamModal}
+        selectedTeam={selectedTeam}
       />
       <div className="flex flex-col mx-10 my-10">
         <div className="flex flex-row justify-between">
@@ -169,7 +177,7 @@ const ManageMaintenanceTeam = () => {
                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex gap-2 justify-end">
                               <button
                                 className="text-gray-500 hover:text-green-700"
-                                onClick={openViewTeamModal}
+                                onClick={() => handleViewTeam(team)}
                               >
                                 <AiFillEye className="text-4xl" />
                               </button>
