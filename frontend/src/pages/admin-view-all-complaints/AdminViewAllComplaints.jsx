@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 
-import ComplaintContext from "../../contexts/complaintContext";
+import ComplaintContext from "../../contexts/ComplaintContext";
 import AdminContext from "../../contexts/AdminContext";
 
 const AdminViewAllComplaints = () => {
