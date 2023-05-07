@@ -20,7 +20,8 @@ const PendingComplaints = () => {
 
     return ( 
         <>
-        <div>
+		{complaints != "" ?(
+		<div>		
         <div className="flex gap-2 ml-[400px]">
 				<input
 				    className="ml-[100px] mt-10 mb-8 py-5 w-80 h-2 border-2 border-gray-700 rounded-lg"
@@ -60,7 +61,7 @@ const PendingComplaints = () => {
 							} else if (val.complaintTitle.toLowerCase().includes(searchTerm.toLowerCase())) {
 								return val;
 							}
-						}).filter((elem) => elem.complaintStatus === "pending" && elem.citizenId===id)
+						}).filter((elem) => elem.complaintStatus === "pending" && elem.citizenId._id===id)
 						.map((complaint, key) => (
 							<tbody className="divide-y divide-gray-100 border-t border-gray-100 h-24" key={key}>
 								<tr className="hover:bg-gray-50">
@@ -98,7 +99,12 @@ const PendingComplaints = () => {
 						))}
 					</table>
 				</div>
-        </div>
+        </div>):(
+			<div className="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
+			<img src="/noComplaints.svg" className="ml-[500px] w-72 h-72 px-10 py-10"/>
+			<div className="font font-semibold text-2xl ml-[480px] mb-10" >No Pending Complaints</div>
+		</div>
+		)}
         </>
      );
 }
