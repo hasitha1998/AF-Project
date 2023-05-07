@@ -13,13 +13,20 @@ import ManageComplaints from "./gov-manage-complaints";
 import CustomerLogin from "./customer-login";
 import AdminProfile from "./admin-profile";
 import CustomerDashboard from "./customer-dashboard";
+
+
 import PendingComplaints from "./customer-complaint-types";
 import AssignedComplaints from "./customer-complaint-types";
 import InProgressComplaints from "./customer-complaint-types";
 import ResolvedComplaints from "./customer-complaint-types";
 import InvalidComplaints from "./customer-complaint-types";
 import AdminComplaintView from "./admin-complaint-view";
+
 import AdminViewAllComplaints from "./admin-view-all-complaints";
+import AdminComplaintPending from "./admin-complaint-pending";
+import AdminComplaintAssign from "./admin-complaint-assign";
+import AdminComplaintInprogress from "./admin-complaint-inprogress";
+import AdminComplaintResolved from "./admin-complaint-resolved";
 
 export {
   Home,
@@ -43,6 +50,9 @@ export {
   InvalidComplaints
   AdminProfile,
   CustomerDashboard,
-  AdminComplaintView,
   AdminViewAllComplaints,
+  AdminComplaintPending,
+  AdminComplaintAssign,
+  AdminComplaintInprogress,
+  AdminComplaintResolved,
 };
