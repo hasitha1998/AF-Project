@@ -36,16 +36,24 @@ const AppRoutes = () => {
           <Route path="/" element={<Home />} />
           <Route path="/customer/register" element={<CustomerRegister />} />
           <Route path="/customer/login" element={<CustomerLogin />} />
+          <Route path="/gov/register" element={<GovAuthRegister />} />
 
           {/* Government Authority Routes */}
-          <Route path="/gov/login" element={<GovAuthLogin />} />
-          <Route path="/gov/register" element={<GovAuthRegister />} />
-          <Route path="/gov/dashboard" element={<GovAuthDashboard />} />
+          <Route path="/gov/login" element={<CheckLoginStatus />}>
+            <Route path="/gov/login" element={<GovAuthLogin />} />
+          </Route>
+
           <Route
-            path="/gov/maintenanceTeam"
-            element={<ManageMaintenanceTeam />}
-          />
-          <Route path="/gov/complaints" element={<ManageComplaints />} />
+            path="/gov"
+            element={<PrivateRoute permissionLevel="GOV_AUTHORITY" />}
+          >
+            <Route path="/gov" element={<GovAuthDashboard />} />
+            <Route
+              path="/gov/maintenanceTeam"
+              element={<ManageMaintenanceTeam />}
+            />
+            <Route path="/gov/complaints" element={<ManageComplaints />} />
+          </Route>
 
           {/* Check Login Status Admin */}
           <Route exact path="/admin/login" element={<CheckLoginStatus />}>
@@ -53,7 +61,11 @@ const AppRoutes = () => {
           </Route>
 
           {/* Admin Private Routes */}
-          <Route exact path="/admin" element={<PrivateRoute permissionLevel="ADMIN" />}>
+          <Route
+            exact
+            path="/admin"
+            element={<PrivateRoute permissionLevel="ADMIN" />}
+          >
             <Route exact path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/:id" element={<AdminProfile />} />
             <Route path="/admin/complaint" element={<AdminComplaintView />} />
