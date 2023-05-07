@@ -11,6 +11,7 @@ import {
 	changeComplaintStatus,
 	searchComplaints,
 	getAllComplaintsByAuthority,
+	assignComplaintToMaintenanceTeam,
 } from "./Complaint.controller";
 
 import {
@@ -52,6 +53,7 @@ export default {
 	changeComplaintStatus,
 	searchComplaints,
 	getAllComplaintsByAuthority,
+	assignComplaintToMaintenanceTeam,
 
 	// Admin Controllers
 	registerAdmin,

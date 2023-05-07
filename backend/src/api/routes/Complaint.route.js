@@ -9,6 +9,7 @@ router.get("/test", (req, res) => {
 
 //Complaint Endpoints
 router.get("/authority/:authorityId", controllers.getAllComplaintsByAuthority); // get all complaint by authority
+router.patch("/assign/:id", controllers.assignComplaintToMaintenanceTeam); // assign complaint to maintenance team
 router.post("/", controllers.insertComplaint); // insert one complaint
 router.get("/", controllers.getAllComplaints); // get all complaint
 router.get("/:id", controllers.getOneComplaint); // get one Campingl complaint

@@ -21,6 +21,14 @@ const GovAuthDashboard = () => {
         >
           Manage Complaints
         </Link>
+
+        {/* Link to Assign Complaints */}
+        <Link
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          to="/gov/assignComplaints"
+        >
+          Assign Complaints
+        </Link>
       </div>
     </div>
   );

@@ -18,6 +18,7 @@ export const getAllComplaints = async () => {
 		// name and description of the authority
 		.populate("authority", "name description")
 		.populate("citizenId", "name nic")
+		.populate("assignedTeam", "teamName")
 		.then((complaints) => {
 			return complaints;
 		})
@@ -105,8 +106,24 @@ export const searchComplaints = async (searchTerm) => {
 // Get all Complaints by a specific user
 export const getAllComplaintsByAuthority = async (authority) => {
 	return await ComplaintModel.find({ authority: authority })
+		.populate("assignedTeam", "teamName")
 		.then((complaints) => {
 			return complaints;
+		})
+		.catch((error) => {
+			throw new Error(error.message);
+		});
+};
+
+// assignedTeam
+export const assignComplaintToMaintenanceTeam = async (complaintId, teamId) => {
+	return await ComplaintModel.findByIdAndUpdate(complaintId, { assignedTeam: teamId })
+		.then((complaint) => {
+			if (complaint) {
+				return complaint;
+			} else {
+				throw new Error("complaint not found");
+			}
 		})
 		.catch((error) => {
 			throw new Error(error.message);

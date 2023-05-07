@@ -26,6 +26,7 @@ import {
   AdminComplaintInprogress,
   AdminComplaintResolved,
   AdminGovUsers,
+  AssignComplaints,
 } from "../pages";
 
 // Components
@@ -58,6 +59,10 @@ const AppRoutes = () => {
               element={<ManageMaintenanceTeam />}
             />
             <Route path="/gov/complaints" element={<ManageComplaints />} />
+            <Route
+              path="/gov/assignComplaints"
+              element={<AssignComplaints />}
+            />
           </Route>
 
           {/* Check Login Status Admin */}
@@ -73,16 +78,30 @@ const AppRoutes = () => {
           >
             <Route exact path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/:id" element={<AdminProfile />} />
-            <Route path="/admin/viewAllComplaints" element={<AdminViewAllComplaints />} />
-          <Route path="/admin/pending" element={<PendingAccount />} />
-          <Route path="/admin/userManage" element={<ManageUsers />} />
+            <Route
+              path="/admin/viewAllComplaints"
+              element={<AdminViewAllComplaints />}
+            />
+            <Route path="/admin/pending" element={<PendingAccount />} />
+            <Route path="/admin/userManage" element={<ManageUsers />} />
 
-            <Route path="/admin/pendingComplaints" element={<AdminComplaintPending />} />
-            <Route path="/admin/assignComplaints" element={<AdminComplaintAssign />} />
-            <Route path="/admin/inprogressComplaints" element={<AdminComplaintInprogress />} />
-            <Route path="/admin/resolvedComplaints" element={<AdminComplaintResolved />} />
+            <Route
+              path="/admin/pendingComplaints"
+              element={<AdminComplaintPending />}
+            />
+            <Route
+              path="/admin/assignComplaints"
+              element={<AdminComplaintAssign />}
+            />
+            <Route
+              path="/admin/inprogressComplaints"
+              element={<AdminComplaintInprogress />}
+            />
+            <Route
+              path="/admin/resolvedComplaints"
+              element={<AdminComplaintResolved />}
+            />
             <Route path="/admin/govUsers" element={<AdminGovUsers />} />
-
           </Route>
 
           {/*Complaint Routes*/}
