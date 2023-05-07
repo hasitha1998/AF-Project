@@ -78,6 +78,7 @@ export function CustomerProvider({ children }) {
     }
   };
   
+
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
@@ -93,6 +94,26 @@ export function CustomerProvider({ children }) {
     fetchCustomers();
   }, []);
   
+
+ /* useEffect(() => {
+    try {
+      const response = CustomerAPI.getCustomers();
+      setCustomers(response.data);
+      //makeToast({ type: "success", message: "Customers fetched successfully" });
+    } catch (err) {
+      //makeToast({ type: "error", message: "Failed to fetch customers" });
+      console.log(err);
+    }  }, []);*/
+
+    useEffect(() => {
+      //setIsLoading(true);
+      CustomerAPI.getCustomers().then((response) => {
+        setCustomers(response.data);
+      //console.log(products.values("productName"));
+        setIsLoading(false);
+      });
+    }, []);
+
   
 
    // Update customer
