@@ -107,6 +107,7 @@ export const searchComplaints = async (searchTerm) => {
 export const getAllComplaintsByAuthority = async (authority) => {
 	return await ComplaintModel.find({ authority: authority })
 		.populate("assignedTeam", "teamName")
+		.populate("citizenId", "name nic")
 		.then((complaints) => {
 			return complaints;
 		})
