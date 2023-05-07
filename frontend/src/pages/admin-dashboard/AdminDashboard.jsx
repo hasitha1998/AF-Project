@@ -292,7 +292,7 @@ const AdminDashboard = () => {
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
-                      <Link to="/">
+                      <Link to="/admin/pendingComplaints">
                         <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
@@ -316,7 +316,7 @@ const AdminDashboard = () => {
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
-                      <Link to="/admin/complaint">
+                      <Link to="/admin/assignComplaints">
                         <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>
@@ -342,7 +342,7 @@ const AdminDashboard = () => {
                   </div>
                   <center>
                     <div className="border-t border-white/5 p-4">
-                      <Link to="/user/pending">
+                      <Link to="/admin/inprogressComplaints">
                         <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
                           Click Here
                         </button>

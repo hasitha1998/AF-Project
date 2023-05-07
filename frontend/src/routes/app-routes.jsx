@@ -20,8 +20,10 @@ import {
   CustomerLogin,
   AdminProfile,
   CustomerDashboard,
-  AdminComplaintView,
   AdminViewAllComplaints,
+  AdminComplaintPending,
+  AdminComplaintAssign,
+  AdminComplaintInprogress,
 } from "../pages";
 
 // Components
@@ -57,8 +59,10 @@ const AppRoutes = () => {
           <Route exact path="/admin" element={<PrivateRoute permissionLevel="ADMIN" />}>
             <Route exact path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/:id" element={<AdminProfile />} />
-            <Route path="/admin/complaint" element={<AdminComplaintView />} />
             <Route path="/admin/viewAllComplaints" element={<AdminViewAllComplaints />} />
+            <Route path="/admin/pendingComplaints" element={<AdminComplaintPending />} />
+            <Route path="/admin/assignComplaints" element={<AdminComplaintAssign />} />
+            <Route path="/admin/inprogressComplaints" element={<AdminComplaintInprogress />} />
           </Route>
 
           {/* User Management Routes */}

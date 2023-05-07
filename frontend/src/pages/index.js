@@ -13,8 +13,10 @@ import ManageComplaints from "./gov-manage-complaints";
 import CustomerLogin from "./customer-login";
 import AdminProfile from "./admin-profile";
 import CustomerDashboard from "./customer-dashboard";
-import AdminComplaintView from "./admin-complaint-view";
 import AdminViewAllComplaints from "./admin-view-all-complaints";
+import AdminComplaintPending from "./admin-complaint-pending";
+import AdminComplaintAssign from "./admin-complaint-assign";
+import AdminComplaintInprogress from "./admin-complaint-inprogress";
 
 export {
   Home,
@@ -32,6 +34,8 @@ export {
   CustomerLogin,
   AdminProfile,
   CustomerDashboard,
-  AdminComplaintView,
   AdminViewAllComplaints,
+  AdminComplaintPending,
+  AdminComplaintAssign,
+  AdminComplaintInprogress,
 };
