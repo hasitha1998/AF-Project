@@ -25,6 +25,7 @@ import {
   AdminComplaintAssign,
   AdminComplaintInprogress,
   AdminComplaintResolved,
+  AdminGovUsers,
 } from "../pages";
 
 // Components
@@ -65,6 +66,7 @@ const AppRoutes = () => {
             <Route path="/admin/assignComplaints" element={<AdminComplaintAssign />} />
             <Route path="/admin/inprogressComplaints" element={<AdminComplaintInprogress />} />
             <Route path="/admin/resolvedComplaints" element={<AdminComplaintResolved />} />
+            <Route path="/admin/govUsers" element={<AdminGovUsers />} />
           </Route>
 
           {/* User Management Routes */}

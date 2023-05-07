@@ -1,15 +1,11 @@
 import React, { useContext, useState } from "react";
 
-import ComplaintContext from "../../contexts/complaintContext";
-
-
-const AdminViewAllComplaints = () => {
-  const { complaints, deleteComplaint } = useContext(ComplaintContext);
-  const [searchTerm, setSearchTerm] = useState("");
-
+const AdminGovUsers = () => {
   return (
     <>
-      <h1 className="mt-5 mb-4 text-4xl text-center">All Complaints</h1>
+      <h1 className="mt-5 mb-4 text-4xl text-center">
+        All Gov.Authority Users
+      </h1>
 
       <div className="flex justify-center">
         <div className="flex justify-center">
@@ -21,9 +17,9 @@ const AdminViewAllComplaints = () => {
                 placeholder="Search Here"
                 aria-label="Search"
                 aria-describedby="button-addon3"
-                onChange={(event) => {
-                  setSearchTerm(event.target.value);
-                }}
+                // onChange={(event) => {
+                //   setSearchTerm(event.target.value);
+                // }}
               ></input>
             </div>
           </div>
@@ -60,7 +56,7 @@ const AdminViewAllComplaints = () => {
           </thead>
 
           <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-            {complaints &&
+            {/* {complaints &&
               complaints
                 .filter((val) => {
                   if (searchTerm == "") {
@@ -85,42 +81,38 @@ const AdminViewAllComplaints = () => {
                     return val;
                   }
                 })
-                .map((elem) => (
+                .map((elem) => ( */}
                   <tr class="hover:bg-gray-50">
                     <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                       <div class="text-sm">
                         <div class="font-medium text-gray-700">
-                          {elem.complaintTitle}
+                         
                         </div>
                       </div>
                     </th>
                     <td class="px-6 py-4">
                       <span class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold text-green-600">
                         <span class="h-1.5 w-1.5 rounded-full bg-green-600"></span>
-                        {elem.complaintStatus}
+                      
                       </span>
                     </td>
-                    <td class="px-6 py-4"> {elem.province}</td>
-                    <td class="px-6 py-4">{elem.district}</td>
+                    <td class="px-6 py-4"> </td>
+                    <td class="px-6 py-4"></td>
                     <td class="px-6 py-4">
-                      {elem.authority == "LECO" ? (
-                        <>
+                   
+                      
                           <span class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-md font-semibold text-violet-600">
-                            {elem.authority}
+                           
                           </span>
-                        </>
-                      ) : (
-                        <span class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-md font-semibold text-red-600">
-                          {elem.authority}
-                        </span>
-                      )}
+                    
+                      
                     </td>
-                    <td class="px-6 py-4">{elem.citizenName}</td>
+                    <td class="px-6 py-4"></td>
 
                     <td class="px-6 py-4">
                       <div class="flex">
                         <a x-data="{ tooltip: 'Delete' }" href="#">
-                          <button onClick={() => deleteComplaint(elem._id)}>
+                          <button >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
@@ -141,7 +133,7 @@ const AdminViewAllComplaints = () => {
                       </div>
                     </td>
                   </tr>
-                ))}
+        
           </tbody>
         </table>
       </div>
@@ -149,4 +141,4 @@ const AdminViewAllComplaints = () => {
   );
 };
 
-export default AdminViewAllComplaints;
+export default AdminGovUsers;
